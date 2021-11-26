@@ -2,6 +2,16 @@
 
 #include <cstdlib>
 #include <ctime>
+#include <random>
+
+
+bool testProba(int proba){
+   // fonction pour retourner true avec une certaine probabilité
+   // on génère un chiffre entre 0 et 99 et on retourne s'il est plus grand que
+   // la probabilité moins 100
+   // on retournerait vrai le pourcentage de fois indiquée comme paramètre
+   return ( (rand() % 100) < proba);
+}
 
 
 const T    Milieu::white[] = { (T)255, (T)255, (T)255 };
@@ -37,6 +47,9 @@ void Milieu::step( void )
       it->draw( *this );
 
    } // for
+   mortVieillissement( );
+   if (testProba(5))
+      naissance(); // naissance avec une probabilité de 20%
 
 }
 
@@ -53,4 +66,17 @@ int Milieu::nbVoisins( const Bestiole & b )
 
    return nb;
 
+}
+
+
+void Milieu::mortVieillissement( void )
+{
+   listeBestioles.erase(
+   std::remove_if(listeBestioles.begin(), listeBestioles.end(),
+        [](const Bestiole & b) {return b.estTropVieux();}),
+   listeBestioles.end());
+}
+
+void Milieu::naissance( void ){
+   addMember( Bestiole() );
 }

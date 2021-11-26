@@ -10,6 +10,7 @@
 
 using namespace std;
 
+bool getProba(int seuil);
 
 class Milieu : public UImg
 {
@@ -31,6 +32,8 @@ public :
 
    void addMember( const Bestiole & b ) { listeBestioles.push_back(b); listeBestioles.back().initCoords(width, height); }
    int nbVoisins( const Bestiole & b );
+   void mortVieillissement( void );
+   void naissance(void);
 
 };
 

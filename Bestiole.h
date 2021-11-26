@@ -19,6 +19,8 @@ private :
    static const double     AFF_SIZE;
    static const double     MAX_VITESSE;
    static const double     LIMITE_VUE;
+   static const int        AGE_MAX;
+
 
    static int              next;
 
@@ -28,10 +30,15 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   int               age_actuel;
+   int               age_limit;
+   
+
 
    T               * couleur;
 
 private :
+   void increment_age ( );
    void bouge( int xLim, int yLim );
 
 public :                                           // Forme canonique :
@@ -41,12 +48,17 @@ public :                                           // Forme canonique :
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
-
+   int getID();
    bool jeTeVois( const Bestiole & b ) const;
 
    void initCoords( int xLim, int yLim );
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
+
+   bool estTropVieux( void ) const;
+
+   Bestiole& operator=( const Bestiole & other);
+
 
 };
 
