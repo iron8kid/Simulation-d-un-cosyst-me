@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <iostream>
+#include <random>
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
@@ -25,7 +26,7 @@ Bestiole::Bestiole( void )
    cumulX = cumulY = 0.;
    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
-   age_limit = AGE_MAX;
+   age_limit = rand() % 100 + 1; // age entre 1 et 100
    age_actuel = 0;
 
    couleur = new T[ 3 ];
@@ -61,7 +62,7 @@ Bestiole::~Bestiole( void )
 {
    cout << identite <<" dest Bestiole" << endl;
    delete[] couleur;
-   
+
 
 }
 
@@ -111,7 +112,7 @@ void Bestiole::bouge( int xLim, int yLim )
 }
 
 void Bestiole::increment_age( void )
-{  
+{
    age_actuel++;
 }
 
@@ -145,13 +146,13 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 }
 
 Bestiole& Bestiole::operator=( const Bestiole& other)
-{  
+{
    std::cout <<"operator = called" << std::endl;
    // Guard self assignment
     if (this == &other)
         return *this;
-   
-   
+
+
 
    x = other.x;
    y = other.y;
