@@ -60,7 +60,7 @@ int Bestiole::getID(){
    return identite;}
 Bestiole::~Bestiole( void )
 {
-   cout << identite <<" dest Bestiole" << endl;
+   // cout << identite <<" dest Bestiole" << endl;
    delete[] couleur;
 
 
@@ -147,7 +147,7 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 Bestiole& Bestiole::operator=( const Bestiole& other)
 {
-   std::cout <<"operator = called" << std::endl;
+   // std::cout <<"operator = called" << std::endl;
    // Guard self assignment
     if (this == &other)
         return *this;
