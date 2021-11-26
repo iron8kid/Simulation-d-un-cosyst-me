@@ -37,6 +37,7 @@ void Milieu::step( void )
       it->draw( *this );
 
    } // for
+   mortVieillissement( );
 
 }
 
@@ -53,4 +54,18 @@ int Milieu::nbVoisins( const Bestiole & b )
 
    return nb;
 
+}
+
+
+void Milieu::mortVieillissement( void )
+{  
+   for (auto it = listeBestioles.begin(); it != listeBestioles.end(); ) {
+        if (it->estTropVieux()) {
+         std::cout << it ->getID() << "trying to destroy" <<std::endl;
+         it = listeBestioles.erase(it);
+         std::cout << it ->getID() << " next it" <<std::endl;
+        } else {
+            ++it;
+        }
+    }
 }

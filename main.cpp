@@ -14,6 +14,7 @@ int main()
 
    for ( int i = 1; i <= 20; ++i )
       ecosysteme.getMilieu().addMember( Bestiole() );
+   std::cout << "fin du remplissage" << std::endl;
    ecosysteme.run();
 
 

@@ -4,11 +4,12 @@
 
 #include <cstdlib>
 #include <cmath>
-
+#include <iostream>
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
 const double      Bestiole::LIMITE_VUE = 30.;
+const int         Bestiole::AGE_MAX = 100;
 
 int               Bestiole::next = 0;
 
@@ -20,10 +21,12 @@ Bestiole::Bestiole( void )
 
    cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
-   x = y = 0;
+   x = y =  0;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
+   age_limit = AGE_MAX;
+   age_actuel = 0;
 
    couleur = new T[ 3 ];
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
@@ -45,18 +48,20 @@ Bestiole::Bestiole( const Bestiole & b )
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
+   age_limit = b.age_limit;
+   age_actuel = b.age_actuel;
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
 
 }
 
-
+int Bestiole::getID(){
+   return identite;}
 Bestiole::~Bestiole( void )
 {
-
+   cout << identite <<" dest Bestiole" << endl;
    delete[] couleur;
-
-   cout << "dest Bestiole" << endl;
+   
 
 }
 
@@ -105,10 +110,15 @@ void Bestiole::bouge( int xLim, int yLim )
 
 }
 
+void Bestiole::increment_age( void )
+{  
+   age_actuel++;
+}
+
 
 void Bestiole::action( Milieu & monMilieu )
 {
-
+   increment_age();
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
 
 }
@@ -134,6 +144,28 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 }
 
+Bestiole& Bestiole::operator=( const Bestiole& other)
+{  
+   std::cout <<"operator = called" << std::endl;
+   // Guard self assignment
+    if (this == &other)
+        return *this;
+   
+   
+
+   x = other.x;
+   y = other.y;
+   cumulX = cumulY = 0.;
+   orientation = other.orientation;
+   vitesse = other.vitesse;
+   age_limit = other.age_limit;
+   age_actuel = other.age_actuel;
+   delete[] couleur;
+   couleur = new T[3];
+   memcpy( couleur, other.couleur, 3*sizeof(T) );
+   return *this;
+}
+
 
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
@@ -144,4 +176,9 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
    return ( dist <= LIMITE_VUE );
 
+}
+
+bool Bestiole::estTropVieux( void ) const
+{
+   return (age_actuel >= age_limit);
 }
