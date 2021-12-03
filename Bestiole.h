@@ -49,6 +49,7 @@ public :                                           // Forme canonique :
    void action( Milieu & monMilieu );
    void draw( UImg & support );
    int getID();
+   double getOrientation()
    bool jeTeVois( const Bestiole & b ) const;
 
    void initCoords( int xLim, int yLim );
