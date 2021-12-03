@@ -48,7 +48,7 @@ void Milieu::step( void )
 
    } // for
    mortVieillissement( );
-   if (testProba(5))
+   if (testProba(20))
       naissance(); // naissance avec une probabilité de 20%
 
 }
