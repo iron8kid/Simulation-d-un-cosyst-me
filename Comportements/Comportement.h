@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-class Visiteur
+class Visiteur;
 
-class Comportement 
+class Comportement
 {
 protected :
        T               * couleur;; //!< Name of the MultimediaElement
