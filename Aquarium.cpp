@@ -19,6 +19,10 @@ Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( 
 
 }
 
+Milieu& Aquarium::getMilieu ( void )
+{
+    return *flotte;
+}
 
 Aquarium::~Aquarium( void )
 {

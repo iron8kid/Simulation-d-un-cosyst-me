@@ -32,6 +32,8 @@ private :
    double            vitesse;
    int               age_actuel;
    int               age_limit;
+
+   Milieu          * monMilieu;
    
 
 
@@ -42,7 +44,7 @@ private :
    void bouge( int xLim, int yLim );
 
 public :                                           // Forme canonique :
-   Bestiole( void );                               // Constructeur par defaut
+   Bestiole( Milieu & milieu );                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut

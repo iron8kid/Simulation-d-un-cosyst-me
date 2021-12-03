@@ -34,7 +34,7 @@ public :
    int nbVoisins( const Bestiole & b );
    void mortVieillissement( void );
    void naissance(void);
-
+   std::vector<Bestiole>& getListeBestioles ( void );
 };
 
 

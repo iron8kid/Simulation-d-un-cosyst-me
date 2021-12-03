@@ -15,7 +15,7 @@ const int         Bestiole::AGE_MAX = 100;
 int               Bestiole::next = 0;
 
 
-Bestiole::Bestiole( void )
+Bestiole::Bestiole( Milieu & milieu )
 {
 
    identite = ++next;
@@ -28,7 +28,7 @@ Bestiole::Bestiole( void )
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
    age_limit = rand() % 100 + 1; // age entre 1 et 100
    age_actuel = 0;
-
+   monMilieu = &milieu;
    couleur = new T[ 3 ];
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
    couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
@@ -46,6 +46,7 @@ Bestiole::Bestiole( const Bestiole & b )
 
    x = b.x;
    y = b.y;
+   monMilieu=b.monMilieu;
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;

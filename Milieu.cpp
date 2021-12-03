@@ -35,6 +35,10 @@ Milieu::~Milieu( void )
 
 }
 
+std::vector<Bestiole>& Milieu::getListeBestioles( void )
+{
+   return listeBestioles;
+}
 
 void Milieu::step( void )
 {
@@ -78,5 +82,5 @@ void Milieu::mortVieillissement( void )
 }
 
 void Milieu::naissance( void ){
-   addMember( Bestiole() );
+   addMember( Bestiole(*this) );
 }
