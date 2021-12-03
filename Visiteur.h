@@ -3,12 +3,12 @@
 
 #include <iostream>
 
-class Visitor {
+class Visiteur {
 public:
-   void visitPareseuse(c Pareseuse, *b Bestiole);
-   void visitGregaire(c Gregaire, *b Bestiole);
-   void visitKamikaze(c Kamikaze, *b Bestiole);
-   void visitPrevoyante(c Gregaire, *b Bestiole);
+   virtual void visitPareseuse(const Pareseuse *c, Bestiole *b)=0;
+   virtual void visitGregaire(const Gregaire *c, Bestiole *b)=0;
+   virtual void visitKamikaze(const Kamikaze *c, Bestiole *b )=0;
+   virtual void visitPrevoyante(const Prevoyante *c, Bestiole *b)=0;
 };
 
 
