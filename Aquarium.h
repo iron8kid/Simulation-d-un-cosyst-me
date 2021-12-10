@@ -4,12 +4,11 @@
 
 #include <iostream>
 #include <CImg.h>
+#include "Milieu.h"
 
 using namespace std;
 using namespace cimg_library;
 
-
-class Milieu;
 
 
 class Aquarium : public CImgDisplay
