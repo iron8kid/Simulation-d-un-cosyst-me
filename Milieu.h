@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <vector>
+#include <array>
 
 using namespace std;
 
@@ -24,7 +25,7 @@ class Milieu : public UImg
 
 private :
    static const T          white[];
-   static const std::vector<const Comportement *> comportements;
+   std::array<Comportement *, 4> comportements;
    int                     width, height;
    std::vector<Bestiole>   listeBestioles;
 
