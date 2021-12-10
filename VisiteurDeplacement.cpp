@@ -1,9 +1,5 @@
 #include <iostream>
 #include "VisiteurDeplacement.h"
-#include "Gregaire.h"
-#include "Peureuse.h"
-#include "Prevoyante.h"
-#include "Kamikaze.h"
 
 
 void VisiteurDeplacement::visitGregaire(Gregaire *c, Bestiole *b) 

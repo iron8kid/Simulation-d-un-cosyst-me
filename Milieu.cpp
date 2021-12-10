@@ -22,7 +22,8 @@ Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
 {
 
    cout << "const Milieu" << endl;
-
+   comportements = {new Gregaire(), new Kamikaze(), new Peureuse(int 4), new Prevoyante()}
+   std:cout << "comportemnts len" << comportments.size() << std:endl;
    std::srand( time(NULL) );
 
 }

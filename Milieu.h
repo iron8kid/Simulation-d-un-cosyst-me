@@ -4,6 +4,13 @@
 
 #include "UImg.h"
 #include "Bestiole.h"
+#include "Comportements/Comportement.h"
+#include "Comportements/Gregaire.h"
+#include "Comportements/Kamikaze.h"
+#include "Comportements/Peureuse.h"
+#include "Comportements/Prevoyante.h"
+
+
 
 #include <iostream>
 #include <vector>
@@ -17,7 +24,7 @@ class Milieu : public UImg
 
 private :
    static const T          white[];
-
+   static const std::vector<const Comportement *> comportements;
    int                     width, height;
    std::vector<Bestiole>   listeBestioles;
 
