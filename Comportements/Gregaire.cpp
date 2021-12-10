@@ -1,8 +1,8 @@
 #include "Gregaire.h"
-#include "../Visiteur.h"
-#include "../Milieu.h"
-#include "../Bestiole.h"
-#include "Comportement.h"
+#include "Visiteur.h"
+//#include "../Milieu.h"
+//#include "../Bestiole.h"
+//#include "Comportement.h"
 
 Gregaire::Gregaire( )
 {

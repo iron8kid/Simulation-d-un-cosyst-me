@@ -2,6 +2,7 @@
 #define _KAMIKAZE
 
 #include "Comportement.h"
+#include "Milieu.h"
 #include <iostream>
 
 

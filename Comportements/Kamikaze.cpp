@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Kamikaze.h"
-#include "../Visiteur.h"
+#include "Visiteur.h"
 #include <limits>
 
 

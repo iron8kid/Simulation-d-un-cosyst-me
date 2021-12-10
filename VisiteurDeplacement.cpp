@@ -1,24 +1,23 @@
 #include <iostream>
 #include "VisiteurDeplacement.h"
 
-
-void VisiteurDeplacement::visitGregaire(Gregaire *c, Bestiole *b) 
+void VisiteurDeplacement::visitGregaire(const Gregaire *c, Bestiole *b) 
 {
     std::cout << "Visiting " << std::endl;
 }
 
-void VisiteurDeplacement::visitPeureuse(Peureuse *c, Bestiole *b)
+void VisiteurDeplacement::visitPeureuse(const Peureuse *c, Bestiole *b)
 {
     std::cout << "Visiting " << std::endl;
 }
 
 
-void VisiteurDeplacement::visitKamikaze(Kamikaze *c, Bestiole *b)
+void VisiteurDeplacement::visitKamikaze(const Kamikaze *c, Bestiole *b)
 {
     std::cout << "Visiting " << std::endl;
 }
 
-void VisiteurDeplacement::visitPrevoyante(Prevoyante *c, Bestiole *b)
+void VisiteurDeplacement::visitPrevoyante(const Prevoyante *c, Bestiole *b)
 {
     std::cout << "Visiting " << std::endl;
 }

@@ -1,10 +1,7 @@
 #ifndef _VISITEUR_
 #define _VISITEUR_
 
-#include "Comportements/Kamikaze.h"
-#include "Comportements/Gregaire.h"
-#include "Comportements/Peureuse.h"
-#include "Comportements/Prevoyante.h"
+#include "Comportements.h"
 #include "Bestiole.h"
 
 class Visiteur {

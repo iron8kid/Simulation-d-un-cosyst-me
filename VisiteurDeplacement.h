@@ -4,10 +4,13 @@
 #include "Visiteur.h"
 
 class VisiteurDeplacement: public Visiteur {
-   void visitPeureuse(Peureuse *c, Bestiole *b);
-   void visitGregaire(Gregaire *c, Bestiole *b);
-   void visitKamikaze(Kamikaze *c, Bestiole *b);
-   void visitPrevoyante(Prevoyante *c, Bestiole *b);
+public:
+   VisiteurDeplacement(){};
+   ~VisiteurDeplacement(){};
+   void visitPeureuse(const Peureuse *c, Bestiole *b) override;
+   void visitGregaire(const Gregaire *c, Bestiole *b) override;
+   void visitKamikaze(const Kamikaze *c, Bestiole *b) override;
+   void visitPrevoyante(const Prevoyante *c, Bestiole *b) override;
 };
 
 

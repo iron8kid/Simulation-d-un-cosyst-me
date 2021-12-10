@@ -1,9 +1,10 @@
 #include "Milieu.h"
-#include "Comportements/Comportement.h"
+/*#include "Comportements/Comportement.h"
 #include "Comportements/Gregaire.h"
 #include "Comportements/Kamikaze.h"
 #include "Comportements/Peureuse.h"
-#include "Comportements/Prevoyante.h"
+#include "Comportements/Prevoyante.h"*/
+#include "VisiteurDeplacement.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -30,6 +31,7 @@ Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
    comportements = {new Gregaire(), new Kamikaze(), new Peureuse(4), new Prevoyante()};
    cout << "comportemnts len" << comportements.size() << endl;
    std::srand( time(NULL) );
+   visiteurDeplacement = new VisiteurDeplacement();
 
 }
 
@@ -39,6 +41,7 @@ Milieu::~Milieu( void )
    for (const Comportement *comportement : comportements) {
     delete comportement;
    }
+   delete visiteurDeplacement;
    cout << "dest Milieu" << endl;
 
 }

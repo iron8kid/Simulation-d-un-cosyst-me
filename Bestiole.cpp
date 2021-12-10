@@ -1,6 +1,7 @@
 #include "Bestiole.h"
 
 #include "Milieu.h"
+#include "VisiteurDeplacement.h"
 
 #include <cstdlib>
 #include <cmath>
@@ -29,6 +30,7 @@ Bestiole::Bestiole( Milieu & milieu )
    age_limit = rand() % 100 + 1; // age entre 1 et 100
    age_actuel = 0;
    monMilieu = &milieu;
+   comportement = monMilieu->comportements[2];
    couleur = new T[ 3 ];
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
    couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
@@ -52,6 +54,7 @@ Bestiole::Bestiole( const Bestiole & b )
    vitesse = b.vitesse;
    age_limit = b.age_limit;
    age_actuel = b.age_actuel;
+   comportement = monMilieu->comportements[2];
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
 
@@ -127,6 +130,7 @@ void Bestiole::increment_age( void )
 void Bestiole::action( Milieu & monMilieu )
 {
    increment_age();
+   comportement->accept(monMilieu.visiteurDeplacement, this);
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
 
 }
@@ -154,7 +158,7 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 Bestiole& Bestiole::operator=( const Bestiole& other)
 {
-   // std::cout <<"operator = called" << std::endl;
+   std::cout <<"operator = called" << std::endl;
    // Guard self assignment
     if (this == &other)
         return *this;
@@ -168,6 +172,9 @@ Bestiole& Bestiole::operator=( const Bestiole& other)
    vitesse = other.vitesse;
    age_limit = other.age_limit;
    age_actuel = other.age_actuel;
+   monMilieu = other.monMilieu;
+   comportement = monMilieu->comportements[2];
+
    delete[] couleur;
    couleur = new T[3];
    memcpy( couleur, other.couleur, 3*sizeof(T) );

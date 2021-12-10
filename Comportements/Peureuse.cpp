@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Peureuse.h"
-#include "../Visiteur.h"
-#include "Milieu.h"
-#include "Bestiole.h"
+#include "Visiteur.h"
+// #include "Milieu.h"
+// #include "Bestiole.h"
 
 
 Peureuse::Peureuse(int nbVoisins)

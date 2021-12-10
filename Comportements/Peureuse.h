@@ -3,7 +3,7 @@
 
 #include "Comportement.h"
 #include "Milieu.h"
-#include "Bestiole.h"
+// #include "Bestiole.h"
 #include <iostream>
 
 

@@ -2,6 +2,7 @@
 #define _PREVOYANTE
 
 #include "Comportement.h"
+#include "Milieu.h"
 #include <iostream>
 
 

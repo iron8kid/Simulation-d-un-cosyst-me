@@ -10,6 +10,7 @@ using namespace std;
 
 
 class Milieu;
+class Comportement;
 
 
 class Bestiole
@@ -34,7 +35,7 @@ private :
    int               age_limit;
 
    Milieu          * monMilieu;
-   
+   Comportement    * comportement;
 
 
    T               * couleur;
