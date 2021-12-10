@@ -50,8 +50,8 @@ public :                                           // Forme canonique :
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
-   int getID();
-   double getOrientation();
+   int getID() const;
+   double getOrientation() const ;
    bool jeTeVois( const Bestiole & b ) const;
 
    void initCoords( int xLim, int yLim );

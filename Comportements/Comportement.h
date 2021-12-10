@@ -2,16 +2,19 @@
 #define _COMPORTEMENT
 
 #include <iostream>
+#include "UImg.h"
+#include "Bestiole.h"
 
 class Visiteur;
 
 class Comportement
 {
 protected :
-       T               * couleur;; //!< Name of the MultimediaElement
+    T               * couleur;
 public:
-    virtual void accept(Visiteur *v) const=0; //!< Abstract Method to allow any visitor and for the child to implements this method
-    T getCouleur() const; //!< Method to get the name of the MultimediaElement
+    virtual void accept(Visiteur *v, Bestiole *b) const=0;
+    ~Comportement(void);
+    T* getCouleur() const; 
 };
 
 #endif

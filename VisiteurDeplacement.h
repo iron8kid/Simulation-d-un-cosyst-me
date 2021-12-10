@@ -4,11 +4,11 @@
 #include "Visiteur.h"
 
 class VisiteurDeplacement: public Visiteur {
-   void visitPareseuse(Peureuse *c, Bestiole *b);
+   void visitPeureuse(Peureuse *c, Bestiole *b);
    void visitGregaire(Gregaire *c, Bestiole *b);
    void visitKamikaze(Kamikaze *c, Bestiole *b);
    void visitPrevoyante(Prevoyante *c, Bestiole *b);
-}
+};
 
 
 #endif

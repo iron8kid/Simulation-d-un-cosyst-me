@@ -2,6 +2,8 @@
 #define _PEUREUSE
 
 #include "Comportement.h"
+#include "Milieu.h"
+#include "Bestiole.h"
 #include <iostream>
 
 
@@ -11,6 +13,6 @@ private :
 public :
 	Peureuse(int nbVoisins);
     bool checkNeighbours(const Milieu & monMilieu,const Bestiole & b, const int maxnb);
-    void accept(Visiteur *v) const override; 
+    void accept(Visiteur *v, Bestiole *b) const override; 
 };
 #endif

@@ -1,4 +1,9 @@
 #include "Milieu.h"
+#include "Comportements/Comportement.h"
+#include "Comportements/Gregaire.h"
+#include "Comportements/Kamikaze.h"
+#include "Comportements/Peureuse.h"
+#include "Comportements/Prevoyante.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -31,7 +36,9 @@ Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
 
 Milieu::~Milieu( void )
 {
-
+   for (const Comportement *comportement : comportements) {
+    delete comportement;
+   }
    cout << "dest Milieu" << endl;
 
 }
@@ -59,13 +66,13 @@ void Milieu::step( void )
 }
 
 
-int Milieu::nbVoisins( const Bestiole & b )
+int Milieu::nbVoisins( const Bestiole & b ) const
 {
 
    int         nb = 0;
 
 
-   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
+   for ( auto it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
       if ( !(b == *it) && b.jeTeVois(*it) )
          ++nb;
 

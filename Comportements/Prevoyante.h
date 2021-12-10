@@ -9,6 +9,6 @@ class Prevoyante : public Comportement {
 private :
 public :
     Prevoyante( void );
-    void accept(Visiteur *v) const override; 
+    void accept(Visiteur *v, Bestiole *b) const override; 
 };
 #endif

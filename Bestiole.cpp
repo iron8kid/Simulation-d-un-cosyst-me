@@ -57,10 +57,14 @@ Bestiole::Bestiole( const Bestiole & b )
 
 }
 
-int Bestiole::getID(){
-   return identite;}
-double Bestiole::getOrientation(){
-    return orientation;}
+int Bestiole::getID() const
+{
+   return identite;
+}
+double Bestiole::getOrientation() const
+{
+    return orientation;
+}
 Bestiole::~Bestiole( void )
 {
    // cout << identite <<" dest Bestiole" << endl;

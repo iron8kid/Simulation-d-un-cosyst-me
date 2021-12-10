@@ -39,7 +39,7 @@ public :
    void step( void );
 
    void addMember( const Bestiole & b ) { listeBestioles.push_back(b); listeBestioles.back().initCoords(width, height); }
-   int nbVoisins( const Bestiole & b );
+   int nbVoisins( const Bestiole & b ) const;
    void mortVieillissement( void );
    void naissance(void);
    std::vector<Bestiole>& getListeBestioles ( void );
