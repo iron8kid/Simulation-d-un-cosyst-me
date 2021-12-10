@@ -8,8 +8,8 @@
 class Gregaire : public Comportement {
 private :
 public :
-	Gregaire( void )g ;
-    double meanOrientation(Milieu & monMilieu);
+	Gregaire( void );
+    double meanOrientation(const Milieu & monMilieu,const Bestiole & b);
     void accept(Visitor *v) const override; 
 };
 #endif
