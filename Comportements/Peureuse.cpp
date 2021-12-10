@@ -5,7 +5,7 @@
 #include "Bestiole.h"
 
 
-Peureuse::Peureuse( int nbVoisins )
+Peureuse::Peureuse(int nbVoisins)
 {
     nbVoisinsMax=nbVoisins;
     couleur[ 0 ] = static_cast<int>( static_cast<double>(230.));

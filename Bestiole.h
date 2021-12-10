@@ -52,6 +52,7 @@ public :                                           // Forme canonique :
    void draw( UImg & support );
    int getID() const;
    double getOrientation() const ;
+   double getDistance( const Bestiole & b ) const;
    bool jeTeVois( const Bestiole & b ) const;
 
    void initCoords( int xLim, int yLim );

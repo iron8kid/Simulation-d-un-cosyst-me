@@ -185,6 +185,10 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    return ( dist <= LIMITE_VUE );
 
 }
+double Bestiole::getDistance( const Bestiole & b ) const
+{
+    return (std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
+}
 
 bool Bestiole::estTropVieux( void ) const
 {
