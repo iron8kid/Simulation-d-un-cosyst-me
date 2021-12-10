@@ -13,7 +13,8 @@ protected :
     T               * couleur;
 public:
     virtual void accept(Visiteur *v, Bestiole *b) const=0;
-    ~Comportement(void);
+    Comportement( void );
+    virtual ~Comportement(void);
     T* getCouleur() const; 
 };
 

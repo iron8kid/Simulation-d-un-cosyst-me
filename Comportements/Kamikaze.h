@@ -9,6 +9,7 @@ class Kamikaze : public Comportement {
 private :
 public :
     Kamikaze( void );
+    ~Kamikaze( void );
     void accept(Visiteur *v, Bestiole *b) const override; 
 };
 #endif

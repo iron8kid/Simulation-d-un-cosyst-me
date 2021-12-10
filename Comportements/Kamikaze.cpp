@@ -12,6 +12,13 @@ Kamikaze::Kamikaze( )
     couleur[ 2 ] = static_cast<int>( static_cast<double>(0.));
 }
 
+Kamikaze::~Kamikaze( void )
+{
+    delete[] couleur;
+    cout << "dest Kamikaze" << endl;
+
+}
+
 void Kamikaze::accept(Visiteur *v, Bestiole *b) const 
 {
     std::cout<<"Kamikaze Element accepted Visitor" << std::endl;

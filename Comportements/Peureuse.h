@@ -12,6 +12,7 @@ private :
     int nbVoisinsMax;
 public :
 	Peureuse(int nbVoisins);
+    ~Peureuse( void );
     bool checkNeighbours(const Milieu & monMilieu,const Bestiole & b, const int maxnb);
     void accept(Visiteur *v, Bestiole *b) const override; 
 };

@@ -13,16 +13,16 @@ Milieu.o : Milieu.h Milieu.cpp Bestiole.h Comportements/Comportement.h Comportem
 Comportement.o : Comportements/Comportement.h Comportements/Comportement.cpp
 	g++ -Wall -std=c++11  -c Comportements/Comportement.cpp -I .	
 
-Gregaire.o : Comportements/Gregaire.h Comportements/Gregaire.cpp Visiteur.h
+Gregaire.o : Comportements/Gregaire.h Comportements/Gregaire.cpp Comportements/Comportement.h Visiteur.h
 	g++ -Wall -std=c++11  -c Comportements/Gregaire.cpp -I .	
 
-Kamikaze.o : Comportements/Kamikaze.h Comportements/Kamikaze.cpp Visiteur.h
+Kamikaze.o : Comportements/Kamikaze.h Comportements/Kamikaze.cpp Comportements/Comportement.h Visiteur.h
 	g++ -Wall -std=c++11  -c Comportements/Kamikaze.cpp -I .	
 
-Peureuse.o : Comportements/Peureuse.h Comportements/Peureuse.cpp Visiteur.h
+Peureuse.o : Comportements/Peureuse.h Comportements/Peureuse.cpp Comportements/Comportement.h Visiteur.h
 	g++ -Wall -std=c++11  -c Comportements/Peureuse.cpp -I .
 
-Prevoyante.o : Comportements/Prevoyante.h Comportements/Prevoyante.cpp Visiteur.h
+Prevoyante.o : Comportements/Prevoyante.h Comportements/Prevoyante.cpp Comportements/Comportement.h Visiteur.h
 	g++ -Wall -std=c++11  -c Comportements/Prevoyante.cpp -I .	
 
 VisiteurDeplacement.o : VisiteurDeplacement.cpp VisiteurDeplacement.h Comportements/Kamikaze.h Comportements/Gregaire.h Comportements/Prevoyante.h Comportements/Peureuse.h Bestiole.h

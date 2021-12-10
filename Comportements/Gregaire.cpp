@@ -1,15 +1,22 @@
 #include "Gregaire.h"
 #include "../Visiteur.h"
-#include "Milieu.h"
-#include "Bestiole.h"
+#include "../Milieu.h"
+#include "../Bestiole.h"
+#include "Comportement.h"
 
 Gregaire::Gregaire( )
 {
-    couleur = new T[ 3 ];
     couleur[ 0 ] = static_cast<int>( static_cast<double>(0.));
     couleur[ 1 ] = static_cast<int>( static_cast<double>(0.));
     couleur[ 2 ] = static_cast<int>( static_cast<double>(230.));
 }
+
+Gregaire::~Gregaire( void )
+{
+    cout << "dest Gregaire" << endl;
+
+}
+
 double Gregaire::meanOrientation(Milieu & monMilieu, const Bestiole & b)
 {
     double orientation;
