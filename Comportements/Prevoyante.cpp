@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Prevoyante.h"
-#include "Visitor.h"
+#include "../Visiteur.h"
 
 
 
@@ -12,7 +12,7 @@ Prevoyante::Prevoyante( )
     couleur[ 2 ] = static_cast<int>( static_cast<double>(110.);
 }
 
-void Prevoyante::accept(Visitor *v) const 
+void Prevoyante::accept(Visiteur *v) const 
 {
     std::cout<<"Prevoyante Element accepted Visitor" << std::endl;
     v->visitPrevoyante(this);

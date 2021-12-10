@@ -11,6 +11,6 @@ private :
 public :
 	Peureuse(int nbVoisins);
     bool checkNeighbours(const Milieu & monMilieu,const Bestiole & b, const int maxnb);
-    void accept(Visitor *v) const override; 
+    void accept(Visiteur *v) const override; 
 };
 #endif

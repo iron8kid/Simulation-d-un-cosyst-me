@@ -1,5 +1,5 @@
 #include "Gregaire.h"
-
+#include "../Visiteur.h"
 
 Gregaire::Gregaire( )
 {
@@ -26,4 +26,9 @@ double Gregaire::meanOrientation(const Milieu & monMilieu, const Bestiole & b)
     }else{
         return orientation/nb;
     }
+}
+void Gregaire::accept(Visiteur *v) const 
+{
+    std::cout<<"Gregaire Element accepted Visitor" << std::endl;
+    v->visitGregaire(this);
 }

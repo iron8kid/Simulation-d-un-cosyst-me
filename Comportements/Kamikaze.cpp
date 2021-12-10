@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Kamikaze.h"
-#include "Visitor.h"
+#include "../Visiteur.h"
 
 
 
@@ -12,7 +12,7 @@ Kamikaze::Kamikaze( )
     couleur[ 2 ] = static_cast<int>( static_cast<double>(0.);
 }
 
-void Kamikaze::accept(Visitor *v) const 
+void Kamikaze::accept(Visiteur *v) const 
 {
     std::cout<<"Kamikaze Element accepted Visitor" << std::endl;
     v->visitKamikaze(this);
