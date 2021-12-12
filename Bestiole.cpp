@@ -10,7 +10,7 @@
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
-const double      Bestiole::LIMITE_VUE = 30.;
+const double      Bestiole::LIMITE_VUE = 50.;
 const int         Bestiole::AGE_MAX = 100;
 
 int               Bestiole::next = 0;
@@ -60,14 +60,6 @@ Bestiole::Bestiole( const Bestiole & b )
 
 }
 
-int Bestiole::getID() const
-{
-   return identite;
-}
-double Bestiole::getOrientation() const
-{
-    return orientation;
-}
 Bestiole::~Bestiole( void )
 {
    // cout << identite <<" dest Bestiole" << endl;
@@ -148,6 +140,7 @@ void Bestiole::draw( UImg & support )
 
 }
 
+// CONDITIONS
 
 bool operator==( const Bestiole & b1, const Bestiole & b2 )
 {
@@ -192,12 +185,34 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    return ( dist <= LIMITE_VUE );
 
 }
+
+bool Bestiole::estTropVieux( void ) const
+{
+   return (age_actuel >= age_limit);
+}
+
+
+// SETTERS
+void Bestiole::setOrientation(double newOrientation){
+   orientation = newOrientation;
+}
+
+// GETTERS
+int Bestiole::getID() const
+{
+   return identite;
+}
+double Bestiole::getOrientation() const
+{
+    return orientation;
+}
+
 double Bestiole::getDistance( const Bestiole & b ) const
 {
     return (std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) ) );
 }
 
-bool Bestiole::estTropVieux( void ) const
+Milieu& Bestiole::getMilieu() const
 {
-   return (age_actuel >= age_limit);
+   return *monMilieu;
 }

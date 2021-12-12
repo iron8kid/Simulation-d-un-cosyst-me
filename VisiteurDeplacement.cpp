@@ -8,7 +8,12 @@ void VisiteurDeplacement::visitGregaire(const Gregaire *c, Bestiole *b)
 
 void VisiteurDeplacement::visitPeureuse(const Peureuse *c, Bestiole *b)
 {
-    std::cout << "Visiting " << std::endl;
+    std::cout << "Visiting Peureuse " << std::endl;
+    if ( c->checkNeighbours(b->getMilieu(), *b)){
+        b->setOrientation(-b->getOrientation());
+        std::cout << "orientation " << std::endl;
+
+    }
 }
 
 

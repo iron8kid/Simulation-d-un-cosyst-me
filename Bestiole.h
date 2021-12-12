@@ -51,16 +51,20 @@ public :                                           // Forme canonique :
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
-   int getID() const;
-   double getOrientation() const ;
-   double getDistance( const Bestiole & b ) const;
-   bool jeTeVois( const Bestiole & b ) const;
-
    void initCoords( int xLim, int yLim );
 
+   // CONDITIONS
+   bool jeTeVois( const Bestiole & b ) const;
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
-
    bool estTropVieux( void ) const;
+   // SETTERS
+   void setOrientation(double newOrientation);
+   // GETTERS
+   int getID( ) const;
+   double getOrientation( ) const ;
+   double getDistance( const Bestiole & b ) const;
+   Milieu& getMilieu( ) const;
+ 
 
    Bestiole& operator=( const Bestiole & other);
 
