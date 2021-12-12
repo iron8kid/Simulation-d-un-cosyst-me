@@ -31,10 +31,13 @@ Bestiole::Bestiole( Milieu & milieu )
    age_actuel = 0;
    monMilieu = &milieu;
    comportement = monMilieu->comportements[2];
-   couleur = new T[ 3 ];
+   // couleur = new T[ 3 ];
+   couleur = comportement->getCouleur();
+   // memcpy(couleur, comportement->getCouleur(), 3*sizeof(T));
+/*   couleur = new T[ 3 ];
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
    couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );*/
 
 }
 
@@ -54,16 +57,17 @@ Bestiole::Bestiole( const Bestiole & b )
    vitesse = b.vitesse;
    age_limit = b.age_limit;
    age_actuel = b.age_actuel;
-   comportement = monMilieu->comportements[2];
-   couleur = new T[ 3 ];
-   memcpy( couleur, b.couleur, 3*sizeof(T) );
+   comportement = b.comportement;
+   couleur = comportement->getCouleur();
+   // couleur = new T[ 3 ];
+   // memcpy( couleur, b.couleur, 3*sizeof(T) );
 
 }
 
 Bestiole::~Bestiole( void )
 {
    // cout << identite <<" dest Bestiole" << endl;
-   delete[] couleur;
+   //delete[] couleur;
 
 
 }
@@ -166,11 +170,11 @@ Bestiole& Bestiole::operator=( const Bestiole& other)
    age_limit = other.age_limit;
    age_actuel = other.age_actuel;
    monMilieu = other.monMilieu;
-   comportement = monMilieu->comportements[2];
-
-   delete[] couleur;
-   couleur = new T[3];
-   memcpy( couleur, other.couleur, 3*sizeof(T) );
+   comportement = other.comportement;
+   couleur = comportement->getCouleur();
+   // delete[] couleur;
+   // couleur = new T[3];
+   // memcpy( couleur, other.couleur, 3*sizeof(T) );
    return *this;
 }
 
