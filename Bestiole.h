@@ -18,6 +18,7 @@ class Bestiole
 
 private :
    static const double     AFF_SIZE;
+   static const double     SPEED_FACTOR;
    static const double     MAX_VITESSE;
    static const double     LIMITE_VUE;
    static const int        AGE_MAX;
@@ -39,6 +40,7 @@ private :
 
 
    T               * couleur;
+   bool             escaping=false;
 
 private :
    void increment_age ( );
@@ -59,7 +61,11 @@ public :                                           // Forme canonique :
    bool estTropVieux( void ) const;
    // SETTERS
    void setOrientation(double newOrientation);
+   void setEscape(bool new_state);
+   void accelerate(bool boost);
    // GETTERS
+   bool getEscape() const;
+   double getVitesse() const;
    int getID( ) const;
    double getOrientation( ) const ;
    double getDistance( const Bestiole & b ) const;

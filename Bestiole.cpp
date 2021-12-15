@@ -10,6 +10,7 @@
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
+const double      Bestiole::SPEED_FACTOR = 1.5;
 const double      Bestiole::LIMITE_VUE = 50.;
 const int         Bestiole::AGE_MAX = 100;
 
@@ -30,7 +31,7 @@ Bestiole::Bestiole( Milieu & milieu )
    age_limit = rand() % 100 + 1; // age entre 1 et 100
    age_actuel = 0;
    monMilieu = &milieu;
-   comportement = monMilieu->comportements[0];
+   comportement = monMilieu->comportements[2];
    // couleur = new T[ 3 ];
    couleur = comportement->getCouleur();
    // memcpy(couleur, comportement->getCouleur(), 3*sizeof(T));
@@ -210,6 +211,31 @@ double Bestiole::getOrientation() const
 {
     return orientation;
 }
+bool Bestiole::getEscape() const
+{
+    return escaping;
+}
+
+void Bestiole::setEscape(bool new_state)
+{
+    escaping=new_state;
+}
+double Bestiole::getVitesse() const
+{
+    return vitesse;
+}
+void Bestiole::accelerate(bool boost)
+{
+    if(boost)
+    {
+        vitesse=vitesse*SPEED_FACTOR;
+    }
+    else
+    {
+        vitesse=vitesse/SPEED_FACTOR;
+    }
+}
+
 
 double Bestiole::getDistance( const Bestiole & b ) const
 {

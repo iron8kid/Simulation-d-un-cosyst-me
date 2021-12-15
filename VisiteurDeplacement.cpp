@@ -10,11 +10,19 @@ void VisiteurDeplacement::visitGregaire(const Gregaire *c, Bestiole *b)
 void VisiteurDeplacement::visitPeureuse(const Peureuse *c, Bestiole *b)
 {
     std::cout << "Visiting Peureuse " << std::endl;
-    if ( c->checkNeighbours(b->getMilieu(), *b)){
-        b->setOrientation(-b->getOrientation());
-        std::cout << "orientation " << std::endl;
-
+    if (b->getEscape() && !(c->checkNeighbours(b->getMilieu(), *b)))
+    {
+        b->setEscape(false);
+        b->accelerate(false);
     }
+    else if(c->checkNeighbours(b->getMilieu(), *b) && !(b->getEscape()))
+    {
+        b->setOrientation(-b->getOrientation());
+        b->setEscape(true);
+        b->accelerate(true);
+    }
+
+
 }
 
 
