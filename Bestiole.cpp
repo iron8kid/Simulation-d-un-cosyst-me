@@ -34,6 +34,8 @@ Bestiole::Bestiole( Milieu & milieu )
    comportement = monMilieu->comportements[rand() % 3];
    // couleur = new T[ 3 ];
    couleur = comportement->getCouleur();
+   oeil = Oeil();
+
    // memcpy(couleur, comportement->getCouleur(), 3*sizeof(T));
 /*   couleur = new T[ 3 ];
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
@@ -181,13 +183,13 @@ Bestiole& Bestiole::operator=( const Bestiole& other)
 
 
 bool Bestiole::jeTeVois( const Bestiole & b ) const
-{
+{ 
+   bool dist = this->distance(b) <=  oeil.getDistance();
+   double angle_res = std::remainder(this->angle(b)-orientation, 2*M_PI);
+   bool angle_plus = angle_res < oeil.getAngle();
+   bool angle_moins = angle_res > -oeil.getAngle();
 
-   double         dist;
-
-
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ( dist <= LIMITE_VUE );
+   return ( dist && angle_plus && angle_moins);
 
 }
 

@@ -3,6 +3,7 @@
 
 
 #include "UImg.h"
+#include "Capteurs/Oeil.h"
 
 #include <iostream>
 
@@ -11,7 +12,6 @@ using namespace std;
 
 class Milieu;
 class Comportement;
-
 
 class Bestiole
 {
@@ -38,6 +38,7 @@ private :
    Milieu          * monMilieu;
    Comportement    * comportement;
 
+   Oeil              oeil;
 
    T               * couleur;
    bool             escaping=false;

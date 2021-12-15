@@ -17,8 +17,9 @@ private :
 
 
 public :
-	double getDistance ( void );
-	double getAngle( void );
+   Oeil( );
+	double getDistance ( void ) const;
+	double getAngle( void ) const;
 	bool detecte( void );
 
 };
