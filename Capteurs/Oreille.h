@@ -15,8 +15,10 @@ private :
 
 
 public :
-	double getDistance ( void );
-	bool detecte( void );
+   Oreille();
+	double getDistance ( void ) const;
+	bool detecte( double distance_autre ) const;
+   Oreille& operator=( const Oreille & other);
 
 };
 

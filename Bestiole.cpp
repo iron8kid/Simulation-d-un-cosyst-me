@@ -1,5 +1,4 @@
 #include "Bestiole.h"
-
 #include "Milieu.h"
 #include "VisiteurDeplacement.h"
 
@@ -32,14 +31,12 @@ Bestiole::Bestiole( Milieu & milieu )
    age_actuel = 0;
    monMilieu = &milieu;
    comportement = monMilieu->comportements[rand() % 5];
-   // couleur = new T[ 3 ];
+   camouflage = Camouflage(0.);
+   carapace = Carapace(0.);
+   nageoire = Nageoire(0.);
    couleur = comportement->getCouleur();
-   // memcpy(couleur, comportement->getCouleur(), 3*sizeof(T));
-/*   couleur = new T[ 3 ];
-   couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );*/
-
+   oeil = Oeil();
+   oreille = Oreille();
 }
 
 
@@ -59,9 +56,13 @@ Bestiole::Bestiole( const Bestiole & b )
    age_limit = b.age_limit;
    age_actuel = b.age_actuel;
    comportement = b.comportement;
+   camouflage = b.camouflage;
+   carapace = b.carapace;
+   nageoire = b.nageoire;
+
    couleur = comportement->getCouleur();
-   // couleur = new T[ 3 ];
-   // memcpy( couleur, b.couleur, 3*sizeof(T) );
+   oeil = b.oeil;
+   oreille = b.oreille;
 
 }
 
@@ -69,8 +70,6 @@ Bestiole::~Bestiole( void )
 {
    // cout << identite <<" dest Bestiole" << endl;
    //delete[] couleur;
-
-
 }
 
 
@@ -85,8 +84,8 @@ void Bestiole::bouge( int xLim, int yLim )
 {
 
    double         nx, ny;
-   double         dx = cos( orientation )*vitesse;
-   double         dy = -sin( orientation )*vitesse;
+   double         dx = cos( orientation )*vitesse*nageoire.getVitesseNageoire()/carapace.getRalentissement();
+   double         dy = -sin( orientation )*vitesse*nageoire.getVitesseNageoire()/carapace.getRalentissement();
    int            cx, cy;
 
 
@@ -171,21 +170,20 @@ Bestiole& Bestiole::operator=( const Bestiole& other)
    monMilieu = other.monMilieu;
    comportement = other.comportement;
    couleur = comportement->getCouleur();
-   // delete[] couleur;
-   // couleur = new T[3];
-   // memcpy( couleur, other.couleur, 3*sizeof(T) );
+   oeil = other.oeil;
+   oreille = other.oreille;
    return *this;
 }
 
 
 bool Bestiole::jeTeVois( const Bestiole & b ) const
-{
+{  
+   double dist = this->distance(b);
+   double angle = std::remainder(this->angle(b)-orientation, 2*M_PI);
+   bool oeil_cond = oeil.detecte(dist, angle);
+   bool oreille_cond = oreille.detecte(dist);
 
-   double         dist;
-
-
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ( dist <= LIMITE_VUE );
+   return ( oeil_cond && oreille_cond );
 
 }
 

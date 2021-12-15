@@ -39,7 +39,7 @@ void VisiteurDeplacement::visitKamikaze(const Kamikaze *c, Bestiole *b)
 
 void VisiteurDeplacement::visitPrevoyante(const Prevoyante *c, Bestiole *b)
 {
-    std::cout << "Visiting Prevoyante" << std::endl;
+    // std::cout << "Visiting Prevoyante" << std::endl;
     double angle=c->escapeDirection(*b);
     if(angle!=-1)
     {
@@ -50,7 +50,7 @@ void VisiteurDeplacement::visitPrevoyante(const Prevoyante *c, Bestiole *b)
 void VisiteurDeplacement::visitMultiComportement(const MultiComportement *c, Bestiole *b)
 {
 
-    std::cout << "Visiting MultiComportement" << std::endl;
+    // std::cout << "Visiting MultiComportement" << std::endl;
     int tmp=c->getComportement();
     if (tmp!=-1)
     {

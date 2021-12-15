@@ -7,9 +7,9 @@
 
 Prevoyante::Prevoyante( )
 {
-    couleur[ 0 ] = static_cast<int>( static_cast<double>(0.));
+    couleur[ 0 ] = static_cast<int>( static_cast<double>(239.));
     couleur[ 1 ] = static_cast<int>( static_cast<double>(110.));
-    couleur[ 2 ] = static_cast<int>( static_cast<double>(110.));
+    couleur[ 2 ] = static_cast<int>( static_cast<double>(0.));
 }
 
 Prevoyante::~Prevoyante( void )
@@ -89,6 +89,6 @@ double Prevoyante::escapeDirection(Bestiole & b) const
 
 void Prevoyante::accept(Visiteur *v, Bestiole *b) const 
 {
-    std::cout<<"Prevoyante Element accepted Visitor" << std::endl;
+    // std::cout<<"Prevoyante Element accepted Visitor" << std::endl;
     v->visitPrevoyante(this, b);
 }
