@@ -10,7 +10,7 @@ private :
 public :
 	Gregaire( void );
     ~Gregaire(void) ;
-    double meanOrientation(Milieu & monMilieu,const Bestiole & b);
-    void accept(Visiteur *v, Bestiole *b) const override; 
+    double meanOrientation(Milieu & monMilieu,Bestiole & b) const;
+    void accept(Visiteur *v, Bestiole *b) const override;
 };
 #endif

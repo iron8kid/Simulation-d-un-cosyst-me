@@ -1,9 +1,10 @@
 #include <iostream>
 #include "VisiteurDeplacement.h"
 
-void VisiteurDeplacement::visitGregaire(const Gregaire *c, Bestiole *b) 
+void VisiteurDeplacement::visitGregaire(const Gregaire *c, Bestiole *b)
 {
-    std::cout << "Visiting " << std::endl;
+    std::cout << "Visiting Gregaire" << std::endl;
+    b->setOrientation(c->meanOrientation(b->getMilieu(),*b));
 }
 
 void VisiteurDeplacement::visitPeureuse(const Peureuse *c, Bestiole *b)
