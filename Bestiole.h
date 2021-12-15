@@ -28,7 +28,7 @@ private :
 
 private :
    int               identite;
-   double               x, y;
+   int               x, y;
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
@@ -64,10 +64,13 @@ public :                                           // Forme canonique :
    void setEscape(bool new_state);
    void accelerer(bool boost);
    // GETTERS
+   double getAFF_SIZE() const;
    bool getEscape() const;
    double getVitesse() const;
-   double getY() const;
-   double getX() const;
+   int getY() const;
+   int getX() const;
+   double getCumulX() const;
+   double getCumulY() const;
    int getID( ) const;
    double getOrientation( ) const ;
    Milieu& getMilieu( ) const;

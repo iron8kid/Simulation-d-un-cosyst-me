@@ -31,7 +31,7 @@ Bestiole::Bestiole( Milieu & milieu )
    age_limit = rand() % 100 + 1; // age entre 1 et 100
    age_actuel = 0;
    monMilieu = &milieu;
-   comportement = monMilieu->comportements[rand() % 3];
+   comportement = monMilieu->comportements[rand() % 4];
    // couleur = new T[ 3 ];
    couleur = comportement->getCouleur();
    // memcpy(couleur, comportement->getCouleur(), 3*sizeof(T));
@@ -81,8 +81,6 @@ void Bestiole::initCoords( int xLim, int yLim )
    y = rand() % yLim;
 
 }
-
-
 void Bestiole::bouge( int xLim, int yLim )
 {
 
@@ -207,13 +205,25 @@ int Bestiole::getID() const
 {
    return identite;
 }
-double Bestiole::getX() const
+double Bestiole::getAFF_SIZE() const
+{
+    return AFF_SIZE;
+}
+int Bestiole::getX() const
 {
     return x;
 }
-double Bestiole::getY() const
+int Bestiole::getY() const
 {
     return y;
+}
+double Bestiole::getCumulY() const
+{
+    return cumulY;
+}
+double Bestiole::getCumulX() const
+{
+    return cumulX;
 }
 double Bestiole::getOrientation() const
 {
