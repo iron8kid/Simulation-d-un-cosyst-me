@@ -1,15 +1,15 @@
 CPP_FLAGS = -Wall  -std=c++11
 
-main : main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o VisiteurDeplacement.o Oeil.o Oreille.o
-	g++ $(CPP_FLAGS) -o main main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o VisiteurDeplacement.o Oeil.o Oreille.o -I . -lX11 -lpthread
+main : main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o VisiteurDeplacement.o Camouflage.o Carapace.o Nageoire.o Oeil.o Oreille.o
+	g++ $(CPP_FLAGS) -o main main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o VisiteurDeplacement.o Camouflage.o Carapace.o Nageoire.o  Oeil.o Oreille.o -I . -lX11 -lpthread
 
 Aquarium.o : Aquarium.h Aquarium.cpp Milieu.h
 	g++ $(CPP_FLAGS) -c Aquarium.cpp -I .
 
-Bestiole.o : Bestiole.h Bestiole.cpp Capteurs/Oeil.h Capteurs/Oreille.h 
+Bestiole.o : Bestiole.h Bestiole.cpp # Capteurs/Oeil.h Capteurs/Oreille.h Accesoires/Carapace.h Accesoires/Nageoire.h Accesoires/Camouflage.h
 	g++ $(CPP_FLAGS) -c Bestiole.cpp -I .
 
-Milieu.o : Milieu.h Milieu.cpp Bestiole.h Visiteur.h # Comportements/Comportement.h Comportements/Gregaire.h Comportements/Kamikaze.h Comportements/Peureuse.h Comportements/Prevoyante.h
+Milieu.o : Milieu.h Milieu.cpp Bestiole.h Visiteur.h
 	g++ $(CPP_FLAGS) -c Milieu.cpp -I .
 
 Comportement.o : Comportements/Comportement.h Comportements/Comportement.cpp
@@ -27,8 +27,17 @@ Peureuse.o : Comportements/Peureuse.h Comportements/Peureuse.cpp Comportements/C
 Prevoyante.o : Comportements/Prevoyante.h Comportements/Prevoyante.cpp Comportements/Comportement.h Visiteur.h
 	g++ $(CPP_FLAGS) -c Comportements/Prevoyante.cpp -I .	
 
-VisiteurDeplacement.o : VisiteurDeplacement.cpp VisiteurDeplacement.h #Comportements/Kamikaze.h Comportements/Gregaire.h Comportements/Prevoyante.h Comportements/Peureuse.h Bestiole.h
+VisiteurDeplacement.o : VisiteurDeplacement.cpp VisiteurDeplacement.h
 	g++ $(CPP_FLAGS) -c VisiteurDeplacement.cpp -I .
+
+Camouflage.o : Accesoires/Camouflage.h Accesoires/Camouflage.cpp
+	g++ $(CPP_FLAGS) -c Accesoires/Camouflage.cpp -I .
+
+Carapace.o : Accesoires/Carapace.h Accesoires/Carapace.cpp
+	g++ $(CPP_FLAGS) -c Accesoires/Carapace.cpp -I .
+
+Nageoire.o : Accesoires/Nageoire.h Accesoires/Nageoire.cpp
+	g++ $(CPP_FLAGS) -c Accesoires/Nageoire.cpp -I .
 
 Oeil.o : Capteurs/Oeil.cpp Capteurs/Oeil.h
 	g++ $(CPP_FLAGS) -c Capteurs/Oeil.cpp -I .

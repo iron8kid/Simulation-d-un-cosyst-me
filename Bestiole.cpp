@@ -1,5 +1,4 @@
 #include "Bestiole.h"
-
 #include "Milieu.h"
 #include "VisiteurDeplacement.h"
 
@@ -32,6 +31,11 @@ Bestiole::Bestiole( Milieu & milieu )
    age_actuel = 0;
    monMilieu = &milieu;
    comportement = monMilieu->comportements[rand() % 3];
+   camouflage = Camouflage(0.);
+   carapace = Carapace(0.);
+   nageoire = Nageoire(0.);
+
+
    // couleur = new T[ 3 ];
    couleur = comportement->getCouleur();
    oeil = Oeil();
@@ -62,6 +66,10 @@ Bestiole::Bestiole( const Bestiole & b )
    age_limit = b.age_limit;
    age_actuel = b.age_actuel;
    comportement = b.comportement;
+   camouflage = b.camouflage;
+   carapace = b.carapace;
+   nageoire = b.nageoire;
+
    couleur = comportement->getCouleur();
    oeil = b.oeil;
    oreille = b.oreille;
@@ -92,8 +100,8 @@ void Bestiole::bouge( int xLim, int yLim )
 {
 
    double         nx, ny;
-   double         dx = cos( orientation )*vitesse;
-   double         dy = -sin( orientation )*vitesse;
+   double         dx = cos( orientation )*vitesse*nageoire.getVitesseNageoire()/carapace.getRalentissement();
+   double         dy = -sin( orientation )*vitesse*nageoire.getVitesseNageoire()/carapace.getRalentissement();
    int            cx, cy;
 
 

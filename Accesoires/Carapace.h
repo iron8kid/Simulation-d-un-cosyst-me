@@ -12,8 +12,10 @@ private :
 
 
 public :
-	double getRalentissement( void );
-	double getProtection( void );
+   Carapace( void );
+   Carapace( double temp );
+	double getRalentissement( void ) const;
+	double getProtection( void ) const;
 
 };
 

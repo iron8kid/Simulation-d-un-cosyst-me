@@ -5,7 +5,9 @@
 #include "UImg.h"
 #include "Capteurs/Oeil.h"
 #include "Capteurs/Oreille.h"
-
+#include "Accesoires/Camouflage.h"
+#include "Accesoires/Carapace.h"
+#include "Accesoires/Nageoire.h"
 
 #include <iostream>
 
@@ -39,6 +41,10 @@ private :
 
    Milieu          * monMilieu;
    Comportement    * comportement;
+
+   Camouflage        camouflage;
+   Carapace          carapace;
+   Nageoire          nageoire;
 
    Oeil              oeil;
    Oreille           oreille;
