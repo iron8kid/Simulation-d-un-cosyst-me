@@ -39,6 +39,6 @@ double Gregaire::meanOrientation(Milieu & monMilieu,Bestiole & b) const
 }
 void Gregaire::accept(Visiteur *v, Bestiole *b) const 
 {
-    std::cout<<"Gregaire Element accepted Visitor" << std::endl;
+    // std::cout<<"Gregaire Element accepted Visitor" << std::endl;
     v->visitGregaire(this, b);
 }

@@ -6,7 +6,6 @@
 class VisiteurDeplacement: public Visiteur {
 public:
    VisiteurDeplacement(){};
-   ~VisiteurDeplacement(){};
    void visitPeureuse(const Peureuse *c, Bestiole *b) override;
    void visitGregaire(const Gregaire *c, Bestiole *b) override;
    void visitKamikaze(const Kamikaze *c, Bestiole *b) override;

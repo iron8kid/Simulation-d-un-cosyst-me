@@ -22,7 +22,7 @@ Bestiole::Bestiole( Milieu & milieu )
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par defaut" << endl;
+   // cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
    x = y =  0;
    cumulX = cumulY = 0.;
@@ -31,7 +31,7 @@ Bestiole::Bestiole( Milieu & milieu )
    age_limit = rand() % 100 + 1; // age entre 1 et 100
    age_actuel = 0;
    monMilieu = &milieu;
-   comportement = monMilieu->comportements[1];
+   comportement = monMilieu->comportements[2];
    // couleur = new T[ 3 ];
    couleur = comportement->getCouleur();
    // memcpy(couleur, comportement->getCouleur(), 3*sizeof(T));
@@ -48,7 +48,7 @@ Bestiole::Bestiole( const Bestiole & b )
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par copie" << endl;
+   //cout << "const Bestiole (" << identite << ") par copie" << endl;
 
    x = b.x;
    y = b.y;
@@ -156,7 +156,7 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 Bestiole& Bestiole::operator=( const Bestiole& other)
 {
-   std::cout <<"operator = called" << std::endl;
+   // std::cout <<"operator = called" << std::endl;
    // Guard self assignment
     if (this == &other)
         return *this;
@@ -245,7 +245,7 @@ void Bestiole::accelerate(bool boost)
 }
 
 
-double Bestiole::getDistance( const Bestiole & b ) const
+double Bestiole::distance( const Bestiole & b ) const
 {
     return (std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) ) );
 }

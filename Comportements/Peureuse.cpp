@@ -12,9 +12,9 @@ Peureuse::Peureuse(int nbVoisins)
     couleur[ 1 ] = static_cast<int>( static_cast<double>(0.));
     couleur[ 2 ] = static_cast<int>( static_cast<double>(0.));
 }
-bool Peureuse::checkNeighbours(const Milieu & monMilieu, const Bestiole & b) const//, const int maxnb)
+bool Peureuse::checkNeighbours(const Bestiole & b) const//, const int maxnb)
 {
-    return monMilieu.nbVoisins(b)>= nbVoisinsMax;
+    return b.getMilieu().nbVoisins(b) >= nbVoisinsMax;
 }
 
 
@@ -26,6 +26,6 @@ Peureuse::~Peureuse( void )
 
 void Peureuse::accept(Visiteur *v, Bestiole *b) const 
 {
-    std::cout<<"Peureuse Element accepted Visitor" << std::endl;
+    // std::cout<<"Peureuse Element accepted Visitor" << std::endl;
     v->visitPeureuse(this, b);
 }

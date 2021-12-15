@@ -10,7 +10,7 @@ class Kamikaze : public Comportement {
 private :
 public :
     Kamikaze( void );
-    double OrientationToClosetB(Milieu & monMilieu, Bestiole & b) const;
+    double orientationPlusProche(Bestiole & b) const;
     ~Kamikaze( void );
     void accept(Visiteur *v, Bestiole *b) const override; 
 };

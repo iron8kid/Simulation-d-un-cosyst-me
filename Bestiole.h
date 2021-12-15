@@ -70,10 +70,9 @@ public :                                           // Forme canonique :
    double getX() const;
    int getID( ) const;
    double getOrientation( ) const ;
-   double getDistance( const Bestiole & b ) const;
    Milieu& getMilieu( ) const;
- 
-
+   // OPERATORS, COMPARISONS
+   double distance( const Bestiole & b ) const;
    Bestiole& operator=( const Bestiole & other);
 
 

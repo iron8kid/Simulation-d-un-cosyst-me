@@ -11,15 +11,15 @@ Kamikaze::Kamikaze( )
     couleur[ 1 ] = static_cast<int>( static_cast<double>(230.));
     couleur[ 2 ] = static_cast<int>( static_cast<double>(0.));
 }
-double Kamikaze::OrientationToClosetB(Milieu & monMilieu, Bestiole & b) const
+double Kamikaze::orientationPlusProche(Bestiole & b) const
 {
     double dist=numeric_limits<double>::max();
     double tmp;
     Bestiole * cb=nullptr;
-    for ( auto it = monMilieu.getListeBestioles().begin() ; it != monMilieu.getListeBestioles().end() ; ++it ){
+    for ( auto it = b.getMilieu().getListeBestioles().begin() ; it != b.getMilieu().getListeBestioles().end() ; ++it ){
         if (((*it).getID() != b.getID()) && (b.jeTeVois(*it)))
         {
-            tmp = b.getDistance(*it);
+            tmp = b.distance(*it);
             if (tmp<dist)
             {
                 dist=tmp;
@@ -45,6 +45,6 @@ Kamikaze::~Kamikaze( void )
 
 void Kamikaze::accept(Visiteur *v, Bestiole *b) const 
 {
-    std::cout<<"Kamikaze Element accepted Visitor" << std::endl;
+    // std::cout<<"Kamikaze Element accepted Visitor" << std::endl;
     v->visitKamikaze(this, b);
 }
