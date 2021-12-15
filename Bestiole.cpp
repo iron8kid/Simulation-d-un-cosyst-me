@@ -1,5 +1,4 @@
 #include "Bestiole.h"
-
 #include "Milieu.h"
 #include "VisiteurDeplacement.h"
 
@@ -32,6 +31,11 @@ Bestiole::Bestiole( Milieu & milieu )
    age_actuel = 0;
    monMilieu = &milieu;
    comportement = monMilieu->comportements[rand() % 3];
+   camouflage = Camouflage();
+   carapace = Carapace();
+   nageoire = Nageoire();
+
+
    // couleur = new T[ 3 ];
    couleur = comportement->getCouleur();
    // memcpy(couleur, comportement->getCouleur(), 3*sizeof(T));
@@ -59,6 +63,10 @@ Bestiole::Bestiole( const Bestiole & b )
    age_limit = b.age_limit;
    age_actuel = b.age_actuel;
    comportement = b.comportement;
+   camouflage = b.camouflage;
+   carapace = b.carapace;
+   nageoire = b.nageoire;
+
    couleur = comportement->getCouleur();
    // couleur = new T[ 3 ];
    // memcpy( couleur, b.couleur, 3*sizeof(T) );

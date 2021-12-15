@@ -3,6 +3,10 @@
 
 
 #include "UImg.h"
+#include "Accesoires/Camouflage.h"
+#include "Accesoires/Carapace.h"
+#include "Accesoires/Nageoire.h"
+
 
 #include <iostream>
 
@@ -37,6 +41,10 @@ private :
 
    Milieu          * monMilieu;
    Comportement    * comportement;
+
+   Camouflage        camouflage;
+   Carapace          carapace;
+   Nageoire          nageoire;
 
 
    T               * couleur;

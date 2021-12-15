@@ -6,12 +6,14 @@ class Camouflage
 
 private :
    static const double     MAX_CAMOUFLAGE;
+   static const double     MIN_CAMOUFLAGE;
    double            camouflage;
 
 
 public :
-	double getCamouflage( void );
-	double getProtection( void );
+	Camouflage( void );
+	Camouflage( double temp );
+	double getCamouflage( void ) const;
 
 };
 
