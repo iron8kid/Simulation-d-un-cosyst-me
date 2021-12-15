@@ -200,8 +200,9 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    double dist = this->distance(b);
    double angle = std::remainder(this->angle(b)-orientation, 2*M_PI);
    bool oeil_cond = oeil.detecte(dist, angle);
+   bool oreille_cond = oreille.detecte(dist);
 
-   return ( oeil_cond );
+   return ( oeil_cond && oreille_cond );
 
 }
 
