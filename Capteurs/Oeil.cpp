@@ -31,3 +31,14 @@ bool Oeil::detecte( double distance_autre, double angle_res ) const
    	bool angle_moins = angle_res > -angle;
 	return (dist_cond && angle_plus && angle_moins);
 }
+
+Oeil& Oeil::operator=( const Oeil& other )
+{
+   // Guard self assignment
+    if (this == &other)
+        return *this;
+    distance = other.distance;
+    angle = other.angle;
+    detection = other.detection;
+	return *this;
+}

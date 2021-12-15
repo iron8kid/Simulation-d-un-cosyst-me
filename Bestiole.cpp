@@ -35,6 +35,7 @@ Bestiole::Bestiole( Milieu & milieu )
    // couleur = new T[ 3 ];
    couleur = comportement->getCouleur();
    oeil = Oeil();
+   oreille = Oreille();
 
    // memcpy(couleur, comportement->getCouleur(), 3*sizeof(T));
 /*   couleur = new T[ 3 ];
@@ -62,6 +63,8 @@ Bestiole::Bestiole( const Bestiole & b )
    age_actuel = b.age_actuel;
    comportement = b.comportement;
    couleur = comportement->getCouleur();
+   oeil = b.oeil;
+   oreille = b.oreille;
    // couleur = new T[ 3 ];
    // memcpy( couleur, b.couleur, 3*sizeof(T) );
 
@@ -175,6 +178,8 @@ Bestiole& Bestiole::operator=( const Bestiole& other)
    monMilieu = other.monMilieu;
    comportement = other.comportement;
    couleur = comportement->getCouleur();
+   oeil = other.oeil;
+   oreille = other.oreille;
    // delete[] couleur;
    // couleur = new T[3];
    // memcpy( couleur, other.couleur, 3*sizeof(T) );

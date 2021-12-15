@@ -1,12 +1,12 @@
 CPP_FLAGS = -Wall  -std=c++11
 
-main : main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o VisiteurDeplacement.o Oeil.o
-	g++ $(CPP_FLAGS) -o main main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o VisiteurDeplacement.o Oeil.o -I . -lX11 -lpthread
+main : main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o VisiteurDeplacement.o Oeil.o Oreille.o
+	g++ $(CPP_FLAGS) -o main main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o VisiteurDeplacement.o Oeil.o Oreille.o -I . -lX11 -lpthread
 
 Aquarium.o : Aquarium.h Aquarium.cpp Milieu.h
 	g++ $(CPP_FLAGS) -c Aquarium.cpp -I .
 
-Bestiole.o : Bestiole.h Bestiole.cpp Capteurs/Oeil.h
+Bestiole.o : Bestiole.h Bestiole.cpp Capteurs/Oeil.h Capteurs/Oreille.h 
 	g++ $(CPP_FLAGS) -c Bestiole.cpp -I .
 
 Milieu.o : Milieu.h Milieu.cpp Bestiole.h Visiteur.h # Comportements/Comportement.h Comportements/Gregaire.h Comportements/Kamikaze.h Comportements/Peureuse.h Comportements/Prevoyante.h
@@ -32,6 +32,9 @@ VisiteurDeplacement.o : VisiteurDeplacement.cpp VisiteurDeplacement.h #Comportem
 
 Oeil.o : Capteurs/Oeil.cpp Capteurs/Oeil.h
 	g++ $(CPP_FLAGS) -c Capteurs/Oeil.cpp -I .
+
+Oreille.o : Capteurs/Oreille.cpp Capteurs/Oreille.h
+	g++ $(CPP_FLAGS) -c Capteurs/Oreille.cpp -I .
 
 clean :
 	rm *.o main

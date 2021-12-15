@@ -4,6 +4,8 @@
 
 #include "UImg.h"
 #include "Capteurs/Oeil.h"
+#include "Capteurs/Oreille.h"
+
 
 #include <iostream>
 
@@ -39,6 +41,7 @@ private :
    Comportement    * comportement;
 
    Oeil              oeil;
+   Oreille           oreille;
 
    T               * couleur;
    bool             escaping=false;
