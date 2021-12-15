@@ -10,6 +10,7 @@ public:
    void visitGregaire(const Gregaire *c, Bestiole *b) override;
    void visitKamikaze(const Kamikaze *c, Bestiole *b) override;
    void visitPrevoyante(const Prevoyante *c, Bestiole *b) override;
+   void visitMultiComportement(const MultiComportement *c, Bestiole *b) override;
 };
 
 

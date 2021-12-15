@@ -6,5 +6,6 @@
 #include "Comportements/Kamikaze.h"
 #include "Comportements/Peureuse.h"
 #include "Comportements/Prevoyante.h"
+#include "Comportements/MultiComportement.h"
 
 #endif

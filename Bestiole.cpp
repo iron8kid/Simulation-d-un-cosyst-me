@@ -31,7 +31,7 @@ Bestiole::Bestiole( Milieu & milieu )
    age_limit = rand() % 100 + 1; // age entre 1 et 100
    age_actuel = 0;
    monMilieu = &milieu;
-   comportement = monMilieu->comportements[rand() % 4];
+   comportement = monMilieu->comportements[rand() % 5];
    // couleur = new T[ 3 ];
    couleur = comportement->getCouleur();
    // memcpy(couleur, comportement->getCouleur(), 3*sizeof(T));

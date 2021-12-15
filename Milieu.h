@@ -42,7 +42,7 @@ public :
    void mortVieillissement( void );
    void naissance(void);
    std::vector<Bestiole>& getListeBestioles ( void );
-   std::array<Comportement *, 4> comportements;
+   std::array<Comportement *, 5> comportements;
    VisiteurDeplacement *visiteurDeplacement;
 };
 

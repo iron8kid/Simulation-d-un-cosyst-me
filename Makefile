@@ -1,5 +1,5 @@
-main : main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o VisiteurDeplacement.o
-	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o VisiteurDeplacement.o -I . -lX11 -lpthread
+main : main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o  MultiComportement.o VisiteurDeplacement.o
+	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o Comportement.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o MultiComportement.o VisiteurDeplacement.o -I . -lX11 -lpthread
 
 Aquarium.o : Aquarium.h Aquarium.cpp Milieu.h
 	g++ -Wall -std=c++11  -c Aquarium.cpp -I .
@@ -11,19 +11,22 @@ Milieu.o : Milieu.h Milieu.cpp Bestiole.h Visiteur.h # Comportements/Comportemen
 	g++ -Wall -std=c++11  -c Milieu.cpp -I .
 
 Comportement.o : Comportements/Comportement.h Comportements/Comportement.cpp
-	g++ -Wall -std=c++11  -c Comportements/Comportement.cpp -I .	
+	g++ -Wall -std=c++11  -c Comportements/Comportement.cpp -I .
 
 Gregaire.o : Comportements/Gregaire.h Comportements/Gregaire.cpp Comportements/Comportement.h Visiteur.h
 	g++ -Wall -std=c++11  -c Comportements/Gregaire.cpp -I .	
 
 Kamikaze.o : Comportements/Kamikaze.h Comportements/Kamikaze.cpp Comportements/Comportement.h Visiteur.h
-	g++ -Wall -std=c++11  -c Comportements/Kamikaze.cpp -I .	
+	g++ -Wall -std=c++11  -c Comportements/Kamikaze.cpp -I .
 
 Peureuse.o : Comportements/Peureuse.h Comportements/Peureuse.cpp Comportements/Comportement.h Visiteur.h
 	g++ -Wall -std=c++11  -c Comportements/Peureuse.cpp -I .
 
 Prevoyante.o : Comportements/Prevoyante.h Comportements/Prevoyante.cpp Comportements/Comportement.h Visiteur.h
 	g++ -Wall -std=c++11  -c Comportements/Prevoyante.cpp -I .	
+
+MultiComportement.o : Comportements/MultiComportement.h Comportements/MultiComportement.cpp Comportements/Comportement.h Visiteur.h
+	g++ -Wall -std=c++11  -c Comportements/MultiComportement.cpp -I .
 
 VisiteurDeplacement.o : VisiteurDeplacement.cpp VisiteurDeplacement.h #Comportements/Kamikaze.h Comportements/Gregaire.h Comportements/Prevoyante.h Comportements/Peureuse.h Bestiole.h
 	g++ -Wall -std=c++11  -c VisiteurDeplacement.cpp -I .

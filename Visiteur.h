@@ -10,6 +10,7 @@ public:
    virtual void visitGregaire(const Gregaire *c, Bestiole *b)=0;
    virtual void visitKamikaze(const Kamikaze *c, Bestiole *b )=0;
    virtual void visitPrevoyante(const Prevoyante *c, Bestiole *b)=0;
+   virtual void visitMultiComportement(const MultiComportement *c, Bestiole *b)=0;
 };
 
 

@@ -47,3 +47,13 @@ void VisiteurDeplacement::visitPrevoyante(const Prevoyante *c, Bestiole *b)
     }
 
 }
+void VisiteurDeplacement::visitMultiComportement(const MultiComportement *c, Bestiole *b)
+{
+
+    std::cout << "Visiting MultiComportement" << std::endl;
+    int tmp=c->getComportement();
+    if (tmp!=-1)
+    {
+        b->getMilieu().comportements[tmp]->accept(b->getMilieu().visiteurDeplacement, b);
+    }
+}
