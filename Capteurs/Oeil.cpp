@@ -24,7 +24,10 @@ double Oeil::getAngle( void ) const
 {
 	return angle;
 }
-bool Oeil::detecte( void )
+bool Oeil::detecte( double distance_autre, double angle_res ) const
 {
-	return true;
+	bool dist_cond = distance_autre < distance;
+	bool angle_plus = angle_res < angle;
+   	bool angle_moins = angle_res > -angle;
+	return (dist_cond && angle_plus && angle_moins);
 }

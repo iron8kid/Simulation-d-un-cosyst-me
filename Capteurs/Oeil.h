@@ -20,7 +20,7 @@ public :
    Oeil( );
 	double getDistance ( void ) const;
 	double getAngle( void ) const;
-	bool detecte( void );
+	bool detecte( double distance_autre, double angle_res ) const;
 
 };
 

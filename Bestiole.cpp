@@ -183,13 +183,12 @@ Bestiole& Bestiole::operator=( const Bestiole& other)
 
 
 bool Bestiole::jeTeVois( const Bestiole & b ) const
-{ 
-   bool dist = this->distance(b) <=  oeil.getDistance();
-   double angle_res = std::remainder(this->angle(b)-orientation, 2*M_PI);
-   bool angle_plus = angle_res < oeil.getAngle();
-   bool angle_moins = angle_res > -oeil.getAngle();
+{  
+   double dist = this->distance(b);
+   double angle = std::remainder(this->angle(b)-orientation, 2*M_PI);
+   bool oeil_cond = oeil.detecte(dist, angle);
 
-   return ( dist && angle_plus && angle_moins);
+   return ( oeil_cond );
 
 }
 
