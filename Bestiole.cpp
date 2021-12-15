@@ -31,9 +31,9 @@ Bestiole::Bestiole( Milieu & milieu )
    age_actuel = 0;
    monMilieu = &milieu;
    comportement = monMilieu->comportements[rand() % 3];
-   camouflage = Camouflage();
-   carapace = Carapace();
-   nageoire = Nageoire();
+   camouflage = Camouflage(0.);
+   carapace = Carapace(0.);
+   nageoire = Nageoire(0.);
 
 
    // couleur = new T[ 3 ];
@@ -95,8 +95,8 @@ void Bestiole::bouge( int xLim, int yLim )
 {
 
    double         nx, ny;
-   double         dx = cos( orientation )*vitesse;
-   double         dy = -sin( orientation )*vitesse;
+   double         dx = cos( orientation )*vitesse*nageoire.getVitesseNageoire()/carapace.getRalentissement();
+   double         dy = -sin( orientation )*vitesse*nageoire.getVitesseNageoire()/carapace.getRalentissement();
    int            cx, cy;
 
 
