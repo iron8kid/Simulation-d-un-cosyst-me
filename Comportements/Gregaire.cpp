@@ -33,7 +33,7 @@ double Gregaire::meanOrientation(Milieu & monMilieu,Bestiole & b) const
     if(nb==0){
          return b.getOrientation();
     }else{
-        cout << orientation/nb << endl;
+        // cout << orientation/nb << endl;
         return orientation/nb;
     }
 }

@@ -29,7 +29,7 @@ double Kamikaze::orientationPlusProche(Bestiole & b) const
     }
     if(dist!=numeric_limits<double>::max())
     {
-        return -atan2(cb->getY()-b.getY(),cb->getX()-b.getX());
+        return b.angle(*cb);
     }
     else
     {

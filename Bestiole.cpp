@@ -31,7 +31,7 @@ Bestiole::Bestiole( Milieu & milieu )
    age_limit = rand() % 100 + 1; // age entre 1 et 100
    age_actuel = 0;
    monMilieu = &milieu;
-   comportement = monMilieu->comportements[2];
+   comportement = monMilieu->comportements[rand() % 3];
    // couleur = new T[ 3 ];
    couleur = comportement->getCouleur();
    // memcpy(couleur, comportement->getCouleur(), 3*sizeof(T));
@@ -232,7 +232,7 @@ double Bestiole::getVitesse() const
 {
     return vitesse;
 }
-void Bestiole::accelerate(bool boost)
+void Bestiole::accelerer(bool boost)
 {
     if(boost)
     {
@@ -248,6 +248,11 @@ void Bestiole::accelerate(bool boost)
 double Bestiole::distance( const Bestiole & b ) const
 {
     return (std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) ) );
+}
+
+double Bestiole::angle( const Bestiole & b ) const
+{
+    return (-atan2(b.y-y,b.x-x) );
 }
 
 Milieu& Bestiole::getMilieu() const

@@ -14,13 +14,13 @@ void VisiteurDeplacement::visitPeureuse(const Peureuse *c, Bestiole *b)
     if (b->getEscape() && !(c->checkNeighbours(*b)))
     {
         b->setEscape(false);
-        b->accelerate(false);
+        b->accelerer(false);
     }
     else if(c->checkNeighbours(*b) && !(b->getEscape()))
     {
         b->setOrientation(-b->getOrientation());
         b->setEscape(true);
-        b->accelerate(true);
+        b->accelerer(true);
     }
 
 

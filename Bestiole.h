@@ -47,7 +47,7 @@ private :
    void bouge( int xLim, int yLim );
 
 public :                                           // Forme canonique :
-   Bestiole( Milieu & milieu );                               // Constructeur par defaut
+   Bestiole( Milieu & milieu);                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
@@ -62,7 +62,7 @@ public :                                           // Forme canonique :
    // SETTERS
    void setOrientation(double newOrientation);
    void setEscape(bool new_state);
-   void accelerate(bool boost);
+   void accelerer(bool boost);
    // GETTERS
    bool getEscape() const;
    double getVitesse() const;
@@ -73,6 +73,7 @@ public :                                           // Forme canonique :
    Milieu& getMilieu( ) const;
    // OPERATORS, COMPARISONS
    double distance( const Bestiole & b ) const;
+   double angle( const Bestiole & b ) const;
    Bestiole& operator=( const Bestiole & other);
 
 

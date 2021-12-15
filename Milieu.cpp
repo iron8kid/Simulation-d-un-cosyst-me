@@ -19,7 +19,6 @@ bool testProba(int proba){
    return ( (rand() % 100) < proba);
 }
 
-
 const T    Milieu::white[] = { (T)255, (T)255, (T)255 };
 
 
@@ -93,5 +92,10 @@ void Milieu::mortVieillissement( void )
 }
 
 void Milieu::naissance( void ){
-   addMember( Bestiole(*this) );
+   addMember( Bestiole(*this));
+}
+
+void Milieu::addMember( const Bestiole & b ){
+    listeBestioles.push_back(b);
+    listeBestioles.back().initCoords(width, height);
 }

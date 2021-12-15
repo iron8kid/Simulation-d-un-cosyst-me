@@ -7,7 +7,7 @@ Aquarium.o : Aquarium.h Aquarium.cpp Milieu.h
 Bestiole.o : Bestiole.h Bestiole.cpp
 	g++ -Wall -std=c++11  -c Bestiole.cpp -I .
 
-Milieu.o : Milieu.h Milieu.cpp Bestiole.h Comportements/Comportement.h Comportements/Gregaire.h Comportements/Kamikaze.h Comportements/Peureuse.h Comportements/Prevoyante.h
+Milieu.o : Milieu.h Milieu.cpp Bestiole.h Visiteur.h # Comportements/Comportement.h Comportements/Gregaire.h Comportements/Kamikaze.h Comportements/Peureuse.h Comportements/Prevoyante.h
 	g++ -Wall -std=c++11  -c Milieu.cpp -I .
 
 Comportement.o : Comportements/Comportement.h Comportements/Comportement.cpp
@@ -25,7 +25,7 @@ Peureuse.o : Comportements/Peureuse.h Comportements/Peureuse.cpp Comportements/C
 Prevoyante.o : Comportements/Prevoyante.h Comportements/Prevoyante.cpp Comportements/Comportement.h Visiteur.h
 	g++ -Wall -std=c++11  -c Comportements/Prevoyante.cpp -I .	
 
-VisiteurDeplacement.o : VisiteurDeplacement.cpp VisiteurDeplacement.h Comportements/Kamikaze.h Comportements/Gregaire.h Comportements/Prevoyante.h Comportements/Peureuse.h Bestiole.h
+VisiteurDeplacement.o : VisiteurDeplacement.cpp VisiteurDeplacement.h #Comportements/Kamikaze.h Comportements/Gregaire.h Comportements/Prevoyante.h Comportements/Peureuse.h Bestiole.h
 	g++ -Wall -std=c++11  -c VisiteurDeplacement.cpp -I .
 
 
