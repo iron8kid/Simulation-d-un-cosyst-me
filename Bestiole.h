@@ -28,7 +28,7 @@ private :
 
 private :
    int               identite;
-   int               x, y;
+   double               x, y;
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
@@ -66,6 +66,8 @@ public :                                           // Forme canonique :
    // GETTERS
    bool getEscape() const;
    double getVitesse() const;
+   double getY() const;
+   double getX() const;
    int getID( ) const;
    double getOrientation( ) const ;
    double getDistance( const Bestiole & b ) const;

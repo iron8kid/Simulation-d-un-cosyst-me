@@ -2,6 +2,7 @@
 #include "Kamikaze.h"
 #include "Visiteur.h"
 #include <limits>
+#include <cmath>
 
 
 Kamikaze::Kamikaze( )
@@ -10,17 +11,14 @@ Kamikaze::Kamikaze( )
     couleur[ 1 ] = static_cast<int>( static_cast<double>(230.));
     couleur[ 2 ] = static_cast<int>( static_cast<double>(0.));
 }
-Bestiole * Kamikaze::getClosetB(Milieu & monMilieu, Bestiole & b)
+double Kamikaze::OrientationToClosetB(Milieu & monMilieu, Bestiole & b) const
 {
-    if(monMilieu.getListeBestioles().size()==1)
-    {
-        return nullptr;
-    }
     double dist=numeric_limits<double>::max();
     double tmp;
-    Bestiole * cb;
+    Bestiole * cb=nullptr;
     for ( auto it = monMilieu.getListeBestioles().begin() ; it != monMilieu.getListeBestioles().end() ; ++it ){
-        if ((*it).getID() != b.getID()){
+        if (((*it).getID() != b.getID()) && (b.jeTeVois(*it)))
+        {
             tmp = b.getDistance(*it);
             if (tmp<dist)
             {
@@ -29,7 +27,14 @@ Bestiole * Kamikaze::getClosetB(Milieu & monMilieu, Bestiole & b)
             }
         }
     }
-    return cb;
+    if(dist!=numeric_limits<double>::max())
+    {
+        return -atan2(cb->getY()-b.getY(),cb->getX()-b.getX());
+    }
+    else
+    {
+        return dist;
+    }
 }
 
 Kamikaze::~Kamikaze( void )

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "VisiteurDeplacement.h"
+#include <limits>
 
 void VisiteurDeplacement::visitGregaire(const Gregaire *c, Bestiole *b)
 {
@@ -28,7 +29,12 @@ void VisiteurDeplacement::visitPeureuse(const Peureuse *c, Bestiole *b)
 
 void VisiteurDeplacement::visitKamikaze(const Kamikaze *c, Bestiole *b)
 {
-    std::cout << "Visiting " << std::endl;
+    std::cout << "Visiting Kamikaze" << std::endl;
+    double angle=c->OrientationToClosetB(b->getMilieu(), *b);
+    if(angle!=numeric_limits<double>::max())
+    {
+        b->setOrientation(angle);
+    }
 }
 
 void VisiteurDeplacement::visitPrevoyante(const Prevoyante *c, Bestiole *b)
