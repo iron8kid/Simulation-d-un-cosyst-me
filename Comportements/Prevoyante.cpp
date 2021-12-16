@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Prevoyante.h"
 #include "../Visiteur.h"
+#include <limits>
 #include <cmath>
 
 
@@ -73,7 +74,7 @@ Point Prevoyante::PosAtK(int k,Bestiole *b) const
  */
 double Prevoyante::escapeDirection(Bestiole & b) const
 {
-    int k=2;
+    int k=4;
     double aff_size=b.getAFF_SIZE();
     Point bPos=PosAtK(k,&b);
     Point tmpPos;
@@ -93,7 +94,7 @@ double Prevoyante::escapeDirection(Bestiole & b) const
 
         }
     }
-    return (nbVoisins)? M_PI+(mean_angle/nbVoisins) : -1;
+    return (nbVoisins)? (M_PI*(rand()%8)/8)+(mean_angle/nbVoisins) : numeric_limits<double>::max();
 
 
 

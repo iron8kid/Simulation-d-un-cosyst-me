@@ -1,11 +1,5 @@
 #include "Milieu.h"
-/*#include "Comportements/Comportement.h"
-#include "Comportements/Gregaire.h"
-#include "Comportements/Kamikaze.h"
-#include "Comportements/Peureuse.h"
-#include "Comportements/Prevoyante.h"*/
 #include "VisiteurDeplacement.h"
-
 #include <cstdlib>
 #include <ctime>
 #include <random>
@@ -21,7 +15,7 @@ bool testProba(int proba){
 
 const T    Milieu::white[] = { (T)255, (T)255, (T)255 };
 const int      Milieu::DEATH_PROB=1;
-const int      Milieu::CLONE_PROB=5;
+const int      Milieu::CLONE_PROB=1;
 
 Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
                                             width(_width), height(_height)
@@ -61,17 +55,17 @@ void Milieu::step( void )
        (*it).action( *this );
 
        (*it).draw( *this );
+       (*it).collision();
        if(testProba(CLONE_PROB))
        {
            cout <<"A lucky bestiole will be cloned" << endl;
            addMember(Bestiole((*it)));
        }
-      if(testProba(DEATH_PROB))
-      {
-          cout <<"An unlucky bestiole will die" << endl;
-          (*it).setMustDie(true);
-      }
-
+       if(it->getcollisionState() && testProba(DEATH_PROB))
+       {
+           cout <<"An unlucky bestiole will die" << endl;
+           it->setMustDie(true);
+       }
 
    } // for
    mort( );

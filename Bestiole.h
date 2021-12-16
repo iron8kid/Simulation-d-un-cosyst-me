@@ -20,7 +20,9 @@ using namespace std;
 
 class Milieu;
 class Comportement;
-
+/*!
+ *  \class Bestiole
+ */
 class Bestiole
 {
 
@@ -39,6 +41,7 @@ private :
    static int              next;
 
 private :
+   bool              collisionState;
    int               identite;
    int               x, y;
    bool              mustDie;
@@ -67,23 +70,25 @@ private :
 
 public :                                           // Forme canonique :
    Bestiole( Milieu & milieu);                      // Constructeur par defaut
-   Bestiole( Milieu & milieu, int c );
+   Bestiole( Milieu & milieu, int c );              //Constructeur avec choix du comportement
    Bestiole(const Bestiole & b);                 // Constructeur de copies
    ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
    void initCoords( int xLim, int yLim );
-
+   void collision();                            //!< Modifie collisionState et l'oriention si la bestiole est en collision
    // CONDITIONS
-   bool jeTeVois( const Bestiole & b ) const;
+   bool jeTeVois( const Bestiole & b ) const;  //!< verifie si deux bestioles se voient
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
-   bool estTropVieux( void ) const;
+   bool estTropVieux( void ) const;             //!< Vérifie si l'age de la bestiole a depassé l'age max
    // SETTERS
-   void setOrientation(double newOrientation);
-   void setEscape(bool new_state);
-   void accelerer(bool boost);
+   void setcollisionState(bool newState);     //!< setter de collisionState
+   void setOrientation(double newOrientation);//!< setter de Orientation
+   void setEscape(bool new_state);            //!< setter de escape
+   void accelerer(bool boost);                //!< boost la vitesse de la bestiole
    // GETTERS
+   bool getcollisionState() const;
    double getAFF_SIZE() const;
    bool getEscape() const;
    double getVitesse() const;

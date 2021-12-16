@@ -41,7 +41,7 @@ void VisiteurDeplacement::visitPrevoyante(const Prevoyante *c, Bestiole *b)
 {
     // std::cout << "Visiting Prevoyante" << std::endl;
     double angle=c->escapeDirection(*b);
-    if(angle!=-1)
+    if(angle!=numeric_limits<double>::max())
     {
         b->setOrientation(angle);
     }

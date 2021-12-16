@@ -25,6 +25,7 @@ Bestiole::Bestiole( Milieu & milieu )
    // cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
    x = y =  0;
+   collisionState=false;
    mustDie=false;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
@@ -49,6 +50,7 @@ Bestiole::Bestiole( Milieu & milieu, int c )
     // cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
     x = y =  0;
+    collisionState=false;
     mustDie=false;
     cumulX = cumulY = 0.;
     orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
@@ -76,6 +78,7 @@ Bestiole::Bestiole(const Bestiole & b)
 
    x = b.x;
    y = b.y;
+   collisionState=false;
    mustDie=false;
    monMilieu=b.monMilieu;
    cumulX = cumulY = 0.;
@@ -223,14 +226,43 @@ bool Bestiole::estTropVieux( void ) const
 {
    return (age_actuel >= age_limit);
 }
+void Bestiole::collision()
+{
+    bool stillInCollison=false;
+    for ( auto it = monMilieu->getListeBestioles().begin() ; it != monMilieu->getListeBestioles().end() ; ++it )
+    {
+        if (((*it).getID() != identite) && (this->distance(*it)<AFF_SIZE))
+        {
+            stillInCollison=true;
+            if(!collisionState)
+            {
+                orientation=-orientation;
+                collisionState=true;
 
+            }
+
+        }
+    }
+    if(!stillInCollison)
+    {
+        collisionState=false;
+    }
+}
 
 // SETTERS
 void Bestiole::setOrientation(double newOrientation){
    orientation = newOrientation;
 }
+void Bestiole::setcollisionState(bool newState)
+{
+    collisionState=newState;
+}
 
 // GETTERS
+bool Bestiole::getcollisionState() const
+{
+    return collisionState;
+}
 int Bestiole::getID() const
 {
    return identite;
