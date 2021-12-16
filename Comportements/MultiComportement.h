@@ -18,7 +18,7 @@ private :
     static int comp_timer;//!< timeur pour changer le comportement
 public :
     MultiComportement( void );//!< Le Constructeur par defaut
-    ~MultiComportement(void);//!< Le Distructeur
+    ~MultiComportement(void);//!< Le Destructeur
     static int getTimer();//!< getter de comp_timer
     static void setTimer(int t);//!< setter de comp_timer
     int getComportement() const;//!< retourne l'indice du nouveau comportement

@@ -17,7 +17,7 @@ class Gregaire : public Comportement {
 private :
 public :
 	Gregaire( void ); //!< Le Constructeur par defaut
-    ~Gregaire(void) ; //!< Le Distructeur
+    ~Gregaire(void) ; //!< Le Destructeur
     double meanOrientation(Milieu & monMilieu,Bestiole & b) const; //!< retourne la direction moyenne des bestioles environnantes.
     void accept(Visiteur *v, Bestiole *b) const override;
 };

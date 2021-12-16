@@ -21,7 +21,7 @@ bool Peureuse::checkNeighbours(const Bestiole & b) const//, const int maxnb)
     return b.getMilieu().nbVoisins(b) >= nbVoisinsMax;
 }
 
-//! Le Distructeur
+//! Le Destructeur
 Peureuse::~Peureuse( void )
 {
     cout << "dest Peureuse" << endl;

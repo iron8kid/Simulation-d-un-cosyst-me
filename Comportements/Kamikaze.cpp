@@ -43,7 +43,7 @@ double Kamikaze::orientationPlusProche(Bestiole & b) const
     }
 }
 
-//! Le Distructeur
+//! Le Destructeur
 Kamikaze::~Kamikaze( void )
 {
     cout << "dest Kamikaze" << endl;

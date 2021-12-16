@@ -1,3 +1,6 @@
+/*! \file Visiteur.h
+ *  implementation of Abstract class Visiteur headers
+ */
 #ifndef _VISITEUR_
 #define _VISITEUR_
 

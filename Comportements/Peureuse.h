@@ -20,7 +20,7 @@ private :
     int nbVoisinsMax;//!< Le nombre max des bestoiles voisines pour declancher le comportoment Peureuse
 public :
 	Peureuse(int nbVoisins);//!< Le Constructeur par defaut
-    ~Peureuse( void );//!< Le Distructeur
+    ~Peureuse( void );//!< Le Destructeur
     bool checkNeighbours(const Bestiole & b) const;//!< retourne si le nombre de voisines depasse nbVoisinsMax
     void accept(Visiteur *v, Bestiole *b) const override; 
 };

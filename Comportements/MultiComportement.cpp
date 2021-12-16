@@ -10,7 +10,7 @@ MultiComportement::MultiComportement()
     couleur[ 1 ] = static_cast<int>( static_cast<double>(100.));
     couleur[ 2 ] = static_cast<int>( static_cast<double>(100.));
 }
-//! Le Distructeur
+//! Le Destructeur
 MultiComportement::~MultiComportement( void )
 {
     cout << "dest MultiComportement" << endl;

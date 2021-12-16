@@ -17,7 +17,7 @@ class Kamikaze : public Comportement {
 private :
 public :
     Kamikaze( void );//!< Le Constructeur par defaut
-    ~Kamikaze( void ); //!< Le Distructeur
+    ~Kamikaze( void ); //!< Le Destructeur
     double orientationPlusProche(Bestiole & b) const;//!< retourne l'orientation vers la bestiole la plus proche
     void accept(Visiteur *v, Bestiole *b) const override; 
 };

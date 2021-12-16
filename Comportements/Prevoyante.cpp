@@ -12,7 +12,7 @@ Prevoyante::Prevoyante( )
     couleur[ 2 ] = static_cast<int>( static_cast<double>(0.));
 }
 
-//! Le Distructeur
+//! Le Destructeur
 Prevoyante::~Prevoyante( void )
 {
     cout << "dest Prevoyante" << endl;

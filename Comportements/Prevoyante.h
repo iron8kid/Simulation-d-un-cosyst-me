@@ -20,7 +20,7 @@ class Prevoyante : public Comportement {
 private :
 public :
     Prevoyante( void );//!< Le Constructeur par defaut
-    ~Prevoyante( void );//!< Le Distructeur
+    ~Prevoyante( void );//!< Le Destructeur
     Point PosAtK(int k,Bestiole *b) const;//!< retourne la prédiction de la position/orientation d'une bestiole aprés k pas.
     double escapeDirection(Bestiole & b) const;//!< retourne la nouvelle orientation pour eviter les collisions
     void accept(Visiteur *v, Bestiole *b) const override; 

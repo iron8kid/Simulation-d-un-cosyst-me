@@ -12,7 +12,7 @@ Gregaire::Gregaire( )
     couleur[ 2 ] = static_cast<int>( static_cast<double>(230.));
 }
 
-//! Le Distructeur
+//! Le Destructeur
 Gregaire::~Gregaire( void )
 {
     cout << "dest Gregaire" << endl;

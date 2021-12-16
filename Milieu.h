@@ -4,12 +4,6 @@
 
 #include "UImg.h"
 #include "Bestiole.h"
-/*#include "Comportements/Comportement.h"
-#include "Comportements/Gregaire.h"
-#include "Comportements/Kamikaze.h"
-#include "Comportements/Peureuse.h"
-#include "Comportements/Prevoyante.h"*/
-// #include "VisiteurDeplacement.h"
 class VisiteurDeplacement;
 
 #include <iostream>
