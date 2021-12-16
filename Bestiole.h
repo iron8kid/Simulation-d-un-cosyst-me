@@ -57,7 +57,8 @@ private :
    void bouge( int xLim, int yLim );
 
 public :                                           // Forme canonique :
-   Bestiole( Milieu & milieu);                               // Constructeur par defaut
+   Bestiole( Milieu & milieu);                      // Constructeur par defaut
+   Bestiole( Milieu & milieu, int c );
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut

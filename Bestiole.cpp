@@ -38,6 +38,28 @@ Bestiole::Bestiole( Milieu & milieu )
    oeil = Oeil();
    oreille = Oreille();
 }
+Bestiole::Bestiole( Milieu & milieu, int c )
+{
+
+    identite = ++next;
+
+    // cout << "const Bestiole (" << identite << ") par defaut" << endl;
+
+    x = y =  0;
+    cumulX = cumulY = 0.;
+    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
+    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
+    age_limit = rand() % 100 + 1; // age entre 1 et 100
+    age_actuel = 0;
+    monMilieu = &milieu;
+    comportement = monMilieu->comportements[c];
+    camouflage = Camouflage(0.);
+    carapace = Carapace(0.);
+    nageoire = Nageoire(0.);
+    couleur = comportement->getCouleur();
+    oeil = Oeil();
+    oreille = Oreille();
+}
 
 
 Bestiole::Bestiole( const Bestiole & b )
