@@ -2,9 +2,9 @@
 #include <iostream>
 #include <random>
 
-const double	Oreille::MAX_DISTANCE = 100.;
+const double	Oreille::MAX_DISTANCE = 1000.;
 const double	Oreille::MAX_DETECTION = 1.;
-const double	Oreille::MIN_DISTANCE = 0.;
+const double	Oreille::MIN_DISTANCE = 10.;
 const double	Oreille::MIN_DETECTION = 0.;
 
 // INITIALISATION ET DESTRUCTION

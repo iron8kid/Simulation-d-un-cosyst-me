@@ -1,6 +1,3 @@
-/*! \file Milieu .h
- *  implementation of class Milieu headers
- */
 
 
 #include "Milieu.h"
@@ -27,7 +24,7 @@ Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
 {
 
    cout << "const Milieu" << endl;
-   comportements = {new Gregaire(), new Kamikaze(), new Peureuse(4), new Prevoyante(), new MultiComportement()};
+   comportements = {new Gregaire(), new Kamikaze(), new Peureuse(2), new Prevoyante(), new MultiComportement()};
    cout << "comportemnts len" << comportements.size() << endl;
    std::srand( time(NULL) );
    visiteurDeplacement = new VisiteurDeplacement();
@@ -62,7 +59,7 @@ void Milieu::step( void )
 
    } // for
    mortVieillissement( );
-   if (testProba(5))
+   if (testProba(10))
       naissance(); // naissance avec une probabilité de 20%
 
 }

@@ -1,3 +1,7 @@
+/*! \file Bestiole.h
+ *  implementation of class Bestiole headers
+ */
+
 #ifndef _BESTIOLES_H_
 #define _BESTIOLES_H_
 

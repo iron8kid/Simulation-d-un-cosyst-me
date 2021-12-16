@@ -2,10 +2,10 @@
 #include <iostream>
 #include <random>
 
-const double	Oeil::MAX_DISTANCE = 10000.;
+const double	Oeil::MAX_DISTANCE = 200.;
 const double	Oeil::MAX_ANGLE = M_PI/2.;
 const double	Oeil::MAX_DETECTION = 1.;
-const double	Oeil::MIN_DISTANCE = 1000.;
+const double	Oeil::MIN_DISTANCE = 10.;
 const double	Oeil::MIN_ANGLE = 0.;
 const double	Oeil::MIN_DETECTION = 0.;
 

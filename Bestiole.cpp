@@ -11,7 +11,7 @@ const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
 const double      Bestiole::SPEED_FACTOR = 1.5;
 const double      Bestiole::LIMITE_VUE = 50.;
-const int         Bestiole::AGE_MAX = 100000;
+const int         Bestiole::AGE_MAX = 100;
 
 int               Bestiole::next = 0;
 
@@ -27,7 +27,8 @@ Bestiole::Bestiole( Milieu & milieu )
    cumulX = cumulY = 0.;
    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
-   age_limit = rand() % 100 + 1; // age entre 1 et 100
+   age_limit = rand() % AGE_MAX + 1; // age entre 1 et 100
+   //age_limit = AGE_MAX;
    age_actuel = 0;
    monMilieu = &milieu;
    comportement = monMilieu->comportements[rand() % 5];
@@ -49,13 +50,14 @@ Bestiole::Bestiole( Milieu & milieu, int c )
     cumulX = cumulY = 0.;
     orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
     vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
-    age_limit = rand() % 100 + 1; // age entre 1 et 100
+    age_limit = rand() % AGE_MAX + 1; // age entre 1 et 100
+    //age_limit = AGE_MAX;
     age_actuel = 0;
     monMilieu = &milieu;
     comportement = monMilieu->comportements[c];
-    camouflage = Camouflage(0.);
-    carapace = Carapace(0.);
-    nageoire = Nageoire(0.);
+    camouflage = Camouflage();
+    carapace = Carapace();
+    nageoire = Nageoire();
     couleur = comportement->getCouleur();
     oeil = Oeil();
     oreille = Oreille();
@@ -102,6 +104,8 @@ void Bestiole::initCoords( int xLim, int yLim )
    y = rand() % yLim;
 
 }
+
+//Methode pour se deplacer
 void Bestiole::bouge( int xLim, int yLim )
 {
 
@@ -136,13 +140,13 @@ void Bestiole::bouge( int xLim, int yLim )
    }
 
 }
-
+// Methode pour vieillir
 void Bestiole::increment_age( void )
 {
    age_actuel++;
 }
 
-
+//Methode pour faire toutes les actions neccessaires par tour
 void Bestiole::action( Milieu & monMilieu )
 {
    increment_age();
@@ -151,7 +155,7 @@ void Bestiole::action( Milieu & monMilieu )
 
 }
 
-
+// methode pour être afficher
 void Bestiole::draw( UImg & support )
 {
 
@@ -197,7 +201,7 @@ Bestiole& Bestiole::operator=( const Bestiole& other)
    return *this;
 }
 
-
+// methode pour savoir si la bestiole est visible ou non par this
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {  
    double dist = this->distance(b);
@@ -210,7 +214,7 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    return ( oeil_cond || oreille_cond );
 
 }
-
+// methode pour savoir si this a atteint son age limite et doit mourir de vieillesse
 bool Bestiole::estTropVieux( void ) const
 {
    return (age_actuel >= age_limit);
@@ -282,12 +286,13 @@ void Bestiole::accelerer(bool boost)
     }
 }
 
-
+// methode pour savoir la distance qui sépare les deux bestioles
 double Bestiole::distance( const Bestiole & b ) const
 {
     return (std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) ) );
 }
 
+// methode pour savoir l'angle entre les deux bestioles
 double Bestiole::angle( const Bestiole & b ) const
 {
     return (-atan2(b.y-y,b.x-x) );
