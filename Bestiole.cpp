@@ -207,7 +207,7 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    bool oeil_cond = oeil.detecte(dist, angle, camouflage_autre);
    bool oreille_cond = oreille.detecte(dist, camouflage_autre);
 
-   return ( oeil_cond && oreille_cond );
+   return ( oeil_cond || oreille_cond );
 
 }
 
