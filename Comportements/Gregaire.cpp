@@ -4,6 +4,7 @@
 //#include "../Bestiole.h"
 //#include "Comportement.h"
 
+//! Le Constructeur par defaut
 Gregaire::Gregaire( )
 {
     couleur[ 0 ] = static_cast<int>( static_cast<double>(0.));
@@ -11,12 +12,17 @@ Gregaire::Gregaire( )
     couleur[ 2 ] = static_cast<int>( static_cast<double>(230.));
 }
 
+//! Le Distructeur
 Gregaire::~Gregaire( void )
 {
     cout << "dest Gregaire" << endl;
 
 }
 
+/*!
+ * \param b: pointer vers la bestoile qui a le comportement Gregaire
+ * \return (double): retourne la direction moyenne des bestioles environnantes.
+ */
 double Gregaire::meanOrientation(Milieu & monMilieu,Bestiole & b) const
 {
     double orientation;

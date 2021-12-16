@@ -1,21 +1,24 @@
 #include "MultiComportement.h"
 #include "Visiteur.h"
-
+// intialisation du timeur à zero
 int MultiComportement::comp_timer=0;
 
+//! Le Constructeur par defaut
 MultiComportement::MultiComportement()
 {
     couleur[ 0 ] = static_cast<int>( static_cast<double>(100.));
     couleur[ 1 ] = static_cast<int>( static_cast<double>(100.));
     couleur[ 2 ] = static_cast<int>( static_cast<double>(100.));
 }
-
+//! Le Distructeur
 MultiComportement::~MultiComportement( void )
 {
     cout << "dest MultiComportement" << endl;
 
 }
-
+/*!
+ * \return (double): retourne l'indice du nouveau comportement
+ */
 int MultiComportement::getComportement() const
 {
     int t=this->getTimer();

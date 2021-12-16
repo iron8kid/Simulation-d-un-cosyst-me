@@ -4,7 +4,7 @@
 #include <cmath>
 
 
-
+//! Le Constructeur par defaut
 Prevoyante::Prevoyante( )
 {
     couleur[ 0 ] = static_cast<int>( static_cast<double>(239.));
@@ -12,11 +12,18 @@ Prevoyante::Prevoyante( )
     couleur[ 2 ] = static_cast<int>( static_cast<double>(0.));
 }
 
+//! Le Distructeur
 Prevoyante::~Prevoyante( void )
 {
     cout << "dest Prevoyante" << endl;
 
 }
+
+/*!
+ * \param b: pointer vers une bestoile
+ * \param k: nombre de pas
+ * \return double: retourne la prédiction de la position/orientation d'une bestiole aprés k pas.
+ */
 Point Prevoyante::PosAtK(int k,Bestiole *b) const
 {
     int            xLim=(b->getMilieu()).getWidth();
@@ -59,6 +66,11 @@ Point Prevoyante::PosAtK(int k,Bestiole *b) const
     return tmp;
 
 }
+
+/*!
+ * \param b: pointer vers une bestoile
+ * \return (double): retourne la nouvelle orientation pour eviter les collisions.
+ */
 double Prevoyante::escapeDirection(Bestiole & b) const
 {
     int k=2;
