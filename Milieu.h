@@ -22,7 +22,10 @@ class Milieu : public UImg
 {
 
 private :
-   static const T          white[];
+    static const T          white[];
+    static const int     DEATH_PROB;
+    static const int     CLONE_PROB;
+
    int                     width, height;
    std::vector<Bestiole>   listeBestioles;
 
@@ -37,7 +40,7 @@ public :
 
    void addMember( const Bestiole & b );
    int nbVoisins( const Bestiole & b ) const;
-   void mortVieillissement( void );
+   void mort( void );
    void naissance(void);
    std::vector<Bestiole>& getListeBestioles ( void );
    std::array<Comportement *, 5> comportements;

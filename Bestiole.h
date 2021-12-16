@@ -30,6 +30,10 @@ private :
    static const double     MAX_VITESSE;
    static const double     LIMITE_VUE;
    static const int        AGE_MAX;
+   static const double     DEATH_PROB;
+   static const double     CLONE_PROB;
+
+
 
 
    static int              next;
@@ -37,6 +41,7 @@ private :
 private :
    int               identite;
    int               x, y;
+   bool              mustDie;
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
@@ -63,7 +68,7 @@ private :
 public :                                           // Forme canonique :
    Bestiole( Milieu & milieu);                      // Constructeur par defaut
    Bestiole( Milieu & milieu, int c );
-   Bestiole( const Bestiole & b );                 // Constructeur de copies
+   Bestiole(const Bestiole & b);                 // Constructeur de copies
    ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
@@ -83,6 +88,8 @@ public :                                           // Forme canonique :
    bool getEscape() const;
    double getVitesse() const;
    int getY() const;
+   bool getMustDie() const;
+   void setMustDie(bool new_state);
    int getX() const;
    double getCumulX() const;
    double getCumulY() const;

@@ -1,6 +1,9 @@
-
-
 #include "Milieu.h"
+/*#include "Comportements/Comportement.h"
+#include "Comportements/Gregaire.h"
+#include "Comportements/Kamikaze.h"
+#include "Comportements/Peureuse.h"
+#include "Comportements/Prevoyante.h"*/
 #include "VisiteurDeplacement.h"
 
 #include <cstdlib>
@@ -17,14 +20,15 @@ bool testProba(int proba){
 }
 
 const T    Milieu::white[] = { (T)255, (T)255, (T)255 };
-
+const int      Milieu::DEATH_PROB=1;
+const int      Milieu::CLONE_PROB=5;
 
 Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
                                             width(_width), height(_height)
 {
 
    cout << "const Milieu" << endl;
-   comportements = {new Gregaire(), new Kamikaze(), new Peureuse(2), new Prevoyante(), new MultiComportement()};
+   comportements = {new Gregaire(), new Kamikaze(), new Peureuse(4), new Prevoyante(), new MultiComportement()};
    cout << "comportemnts len" << comportements.size() << endl;
    std::srand( time(NULL) );
    visiteurDeplacement = new VisiteurDeplacement();
@@ -51,15 +55,27 @@ void Milieu::step( void )
 {
 
    cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
-   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
+    auto it_end = listeBestioles.end();
+    for ( auto it = listeBestioles.begin() ; it != it_end ; ++it )
    {
+       (*it).action( *this );
 
-      it->action( *this );
-      it->draw( *this );
+       (*it).draw( *this );
+       if(testProba(CLONE_PROB))
+       {
+           cout <<"A lucky bestiole will be cloned" << endl;
+           addMember(Bestiole((*it)));
+       }
+      if(testProba(DEATH_PROB))
+      {
+          cout <<"An unlucky bestiole will die" << endl;
+          (*it).setMustDie(true);
+      }
+
 
    } // for
-   mortVieillissement( );
-   if (testProba(10))
+   mort( );
+   if (testProba(20))
       naissance(); // naissance avec une probabilité de 20%
 
 }
@@ -80,11 +96,11 @@ int Milieu::nbVoisins( const Bestiole & b ) const
 }
 
 
-void Milieu::mortVieillissement( void )
+void Milieu::mort( void )
 {
    listeBestioles.erase(
    std::remove_if(listeBestioles.begin(), listeBestioles.end(),
-        [](const Bestiole & b) {return b.estTropVieux();}),
+        [](const Bestiole & b) {return (b.estTropVieux() || b.getMustDie());}),
    listeBestioles.end());
 }
 

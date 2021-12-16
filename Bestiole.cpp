@@ -13,6 +13,7 @@ const double      Bestiole::SPEED_FACTOR = 1.5;
 const double      Bestiole::LIMITE_VUE = 50.;
 const int         Bestiole::AGE_MAX = 100;
 
+
 int               Bestiole::next = 0;
 
 
@@ -24,6 +25,7 @@ Bestiole::Bestiole( Milieu & milieu )
    // cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
    x = y =  0;
+   mustDie=false;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
@@ -47,6 +49,7 @@ Bestiole::Bestiole( Milieu & milieu, int c )
     // cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
     x = y =  0;
+    mustDie=false;
     cumulX = cumulY = 0.;
     orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
     vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
@@ -64,7 +67,7 @@ Bestiole::Bestiole( Milieu & milieu, int c )
 }
 
 
-Bestiole::Bestiole( const Bestiole & b )
+Bestiole::Bestiole(const Bestiole & b)
 {
 
    identite = ++next;
@@ -73,12 +76,13 @@ Bestiole::Bestiole( const Bestiole & b )
 
    x = b.x;
    y = b.y;
+   mustDie=false;
    monMilieu=b.monMilieu;
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
    age_limit = b.age_limit;
-   age_actuel = b.age_actuel;
+   age_actuel = 0;
    comportement = b.comportement;
    camouflage = b.camouflage;
    carapace = b.carapace;
@@ -238,6 +242,16 @@ double Bestiole::getAFF_SIZE() const
 int Bestiole::getX() const
 {
     return x;
+}
+bool Bestiole::getMustDie() const
+{
+    return mustDie;
+}
+void Bestiole::setMustDie(bool new_state)
+{
+
+    mustDie=new_state;
+
 }
 int Bestiole::getY() const
 {
