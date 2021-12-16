@@ -1,6 +1,6 @@
 #include "Bestiole.h"
-
 #include "Milieu.h"
+#include "VisiteurDeplacement.h"
 
 #include <cstdlib>
 #include <cmath>
@@ -8,62 +8,99 @@
 #include <random>
 
 const double      Bestiole::AFF_SIZE = 8.;
-const double      Bestiole::MAX_VITESSE = 10.;
-const double      Bestiole::LIMITE_VUE = 30.;
-const int         Bestiole::AGE_MAX = 100;
+const double      Bestiole::MAX_VITESSE = 1.5;
+const double      Bestiole::SPEED_FACTOR = 1.5;
+const double      Bestiole::LIMITE_VUE = 50.;
+const int         Bestiole::AGE_MAX = 1000;
+
 
 int               Bestiole::next = 0;
 
 
-Bestiole::Bestiole( void )
+Bestiole::Bestiole( Milieu & milieu )
 {
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par defaut" << endl;
+   // cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
    x = y =  0;
+   collisionState=false;
+   mustDie=false;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
-   age_limit = rand() % 100 + 1; // age entre 1 et 100
+   age_limit = rand() % AGE_MAX + 1; // age entre 1 et 100
+   //age_limit = AGE_MAX;
    age_actuel = 0;
+   monMilieu = &milieu;
+   comportement = monMilieu->comportements[rand() % 5];
+   camouflage = Camouflage();
+   carapace = Carapace();
+   nageoire = Nageoire();
+   couleur = comportement->getCouleur();
+   oeil = Oeil();
+   oreille = Oreille();
+}
+Bestiole::Bestiole( Milieu & milieu, int c )
+{
 
-   couleur = new T[ 3 ];
-   couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+    identite = ++next;
 
+    // cout << "const Bestiole (" << identite << ") par defaut" << endl;
+
+    x = y =  0;
+    collisionState=false;
+    mustDie=false;
+    cumulX = cumulY = 0.;
+    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
+    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
+    age_limit = rand() % AGE_MAX + 1; // age entre 1 et 100
+    //age_limit = AGE_MAX;
+    age_actuel = 0;
+    monMilieu = &milieu;
+    comportement = monMilieu->comportements[c];
+    camouflage = Camouflage();
+    carapace = Carapace();
+    nageoire = Nageoire();
+    couleur = comportement->getCouleur();
+    oeil = Oeil();
+    oreille = Oreille();
 }
 
 
-Bestiole::Bestiole( const Bestiole & b )
+Bestiole::Bestiole(const Bestiole & b)
 {
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par copie" << endl;
+   //cout << "const Bestiole (" << identite << ") par copie" << endl;
 
    x = b.x;
    y = b.y;
+   collisionState=false;
+   mustDie=false;
+   monMilieu=b.monMilieu;
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
    age_limit = b.age_limit;
-   age_actuel = b.age_actuel;
-   couleur = new T[ 3 ];
-   memcpy( couleur, b.couleur, 3*sizeof(T) );
+   age_actuel = 0;
+   comportement = b.comportement;
+   camouflage = b.camouflage;
+   carapace = b.carapace;
+   nageoire = b.nageoire;
+
+   couleur = comportement->getCouleur();
+   oeil = b.oeil;
+   oreille = b.oreille;
 
 }
 
-int Bestiole::getID(){
-   return identite;}
 Bestiole::~Bestiole( void )
 {
    // cout << identite <<" dest Bestiole" << endl;
-   delete[] couleur;
-
-
+   //delete[] couleur;
 }
 
 
@@ -75,13 +112,13 @@ void Bestiole::initCoords( int xLim, int yLim )
 
 }
 
-
+//Methode pour se deplacer
 void Bestiole::bouge( int xLim, int yLim )
 {
 
    double         nx, ny;
-   double         dx = cos( orientation )*vitesse;
-   double         dy = -sin( orientation )*vitesse;
+   double         dx = cos( orientation )*vitesse*nageoire.getVitesseNageoire()/carapace.getRalentissement();
+   double         dy = -sin( orientation )*vitesse*nageoire.getVitesseNageoire()/carapace.getRalentissement();
    int            cx, cy;
 
 
@@ -110,21 +147,22 @@ void Bestiole::bouge( int xLim, int yLim )
    }
 
 }
-
+// Methode pour vieillir
 void Bestiole::increment_age( void )
 {
    age_actuel++;
 }
 
-
+//Methode pour faire toutes les actions neccessaires par tour
 void Bestiole::action( Milieu & monMilieu )
 {
    increment_age();
+   comportement->accept(monMilieu.visiteurDeplacement, this);
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
 
 }
 
-
+// methode pour être afficher
 void Bestiole::draw( UImg & support )
 {
 
@@ -137,6 +175,7 @@ void Bestiole::draw( UImg & support )
 
 }
 
+// CONDITIONS
 
 bool operator==( const Bestiole & b1, const Bestiole & b2 )
 {
@@ -161,25 +200,156 @@ Bestiole& Bestiole::operator=( const Bestiole& other)
    vitesse = other.vitesse;
    age_limit = other.age_limit;
    age_actuel = other.age_actuel;
-   delete[] couleur;
-   couleur = new T[3];
-   memcpy( couleur, other.couleur, 3*sizeof(T) );
+   monMilieu = other.monMilieu;
+   comportement = other.comportement;
+   couleur = comportement->getCouleur();
+   oeil = other.oeil;
+   oreille = other.oreille;
    return *this;
 }
 
-
+// methode pour savoir si la bestiole est visible ou non par this
 bool Bestiole::jeTeVois( const Bestiole & b ) const
-{
+{  
+   double dist = this->distance(b);
+   double angle = std::remainder(this->angle(b)-orientation, 2*M_PI);
+   double camouflage_autre = b.getCamouflage();
 
-   double         dist;
+   bool oeil_cond = oeil.detecte(dist, angle, camouflage_autre);
+   bool oreille_cond = oreille.detecte(dist, camouflage_autre);
 
-
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ( dist <= LIMITE_VUE );
+   return ( oeil_cond || oreille_cond );
 
 }
-
+// methode pour savoir si this a atteint son age limite et doit mourir de vieillesse
 bool Bestiole::estTropVieux( void ) const
 {
    return (age_actuel >= age_limit);
+}
+void Bestiole::collision()
+{
+    bool stillInCollison=false;
+    for ( auto it = monMilieu->getListeBestioles().begin() ; it != monMilieu->getListeBestioles().end() ; ++it )
+    {
+        if (((*it).getID() != identite) && (this->distance(*it)<AFF_SIZE))
+        {
+            stillInCollison=true;
+            if(!collisionState)
+            {
+                orientation=-orientation;
+                collisionState=true;
+
+            }
+
+        }
+    }
+    if(!stillInCollison)
+    {
+        collisionState=false;
+    }
+}
+
+// SETTERS
+void Bestiole::setOrientation(double newOrientation){
+   orientation = newOrientation;
+}
+void Bestiole::setcollisionState(bool newState)
+{
+    collisionState=newState;
+}
+
+// GETTERS
+bool Bestiole::getcollisionState() const
+{
+    return collisionState;
+}
+int Bestiole::getID() const
+{
+   return identite;
+}
+double Bestiole::getAFF_SIZE() const
+{
+    return AFF_SIZE;
+}
+int Bestiole::getX() const
+{
+    return x;
+}
+bool Bestiole::getMustDie() const
+{
+    return mustDie;
+}
+void Bestiole::setMustDie(bool new_state)
+{
+
+    mustDie=new_state;
+
+}
+int Bestiole::getY() const
+{
+    return y;
+}
+double Bestiole::getCumulY() const
+{
+    return cumulY;
+}
+double Bestiole::getCumulX() const
+{
+    return cumulX;
+}
+double Bestiole::getOrientation() const
+{
+    return orientation;
+}
+bool Bestiole::getEscape() const
+{
+    return escaping;
+}
+
+void Bestiole::setEscape(bool new_state)
+{
+    escaping=new_state;
+}
+double Bestiole::getVitesse() const
+{
+    return vitesse;
+}
+
+double Bestiole::getCamouflage( ) const
+{
+   return camouflage.getCamouflage();
+}
+
+void Bestiole::accelerer(bool boost)
+{
+    if(boost)
+    {
+        vitesse=vitesse*SPEED_FACTOR;
+    }
+    else
+    {
+        vitesse=vitesse/SPEED_FACTOR;
+    }
+}
+
+// methode pour savoir la distance qui sépare les deux bestioles
+double Bestiole::distance( const Bestiole & b ) const
+{
+    return (std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) ) );
+}
+
+// methode pour savoir l'angle entre les deux bestioles
+double Bestiole::angle( const Bestiole & b ) const
+{
+    return (-atan2(b.y-y,b.x-x) );
+}
+
+Milieu& Bestiole::getMilieu() const
+{
+   return *monMilieu;
+}
+
+double Bestiole::getProtection() const
+{
+   return carapace.getProtection();
 }

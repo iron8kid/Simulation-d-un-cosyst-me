@@ -1,12 +1,18 @@
+/*! \file Milieu .h
+ *  implementation of class Milieu headers
+ */
+
 #ifndef _MILIEU_H_
 #define _MILIEU_H_
 
 
 #include "UImg.h"
 #include "Bestiole.h"
+class VisiteurDeplacement;
 
 #include <iostream>
 #include <vector>
+#include <array>
 
 using namespace std;
 
@@ -16,7 +22,10 @@ class Milieu : public UImg
 {
 
 private :
-   static const T          white[];
+    static const T          white[];
+    static const int     DEATH_PROB;
+    static const int     CLONE_PROB;
+    static const int     NAISSANCE_PROB;
 
    int                     width, height;
    std::vector<Bestiole>   listeBestioles;
@@ -30,11 +39,13 @@ public :
 
    void step( void );
 
-   void addMember( const Bestiole & b ) { listeBestioles.push_back(b); listeBestioles.back().initCoords(width, height); }
-   int nbVoisins( const Bestiole & b );
-   void mortVieillissement( void );
+   void addMember( const Bestiole & b );
+   int nbVoisins( const Bestiole & b ) const;
+   void mort( void );
    void naissance(void);
-
+   std::vector<Bestiole>& getListeBestioles ( void );
+   std::array<Comportement *, 5> comportements;
+   VisiteurDeplacement *visiteurDeplacement;
 };
 
 

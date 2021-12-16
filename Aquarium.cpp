@@ -1,5 +1,9 @@
-#include "Aquarium.h"
+/*! \file Aquarium.h
+ *  implementation of class Aquarium headers
+ */
 
+
+#include "Aquarium.h"
 #include "Milieu.h"
 
 
@@ -19,6 +23,10 @@ Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( 
 
 }
 
+Milieu& Aquarium::getMilieu ( void )
+{
+    return *flotte;
+}
 
 Aquarium::~Aquarium( void )
 {
