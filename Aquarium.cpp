@@ -1,3 +1,8 @@
+/*! \file Aquarium.h
+ *  implementation of class Aquarium headers
+ */
+
+
 #include "Aquarium.h"
 #include "Milieu.h"
 

@@ -1,3 +1,7 @@
+/*! \file Milieu .h
+ *  implementation of class Milieu headers
+ */
+
 #ifndef _MILIEU_H_
 #define _MILIEU_H_
 
