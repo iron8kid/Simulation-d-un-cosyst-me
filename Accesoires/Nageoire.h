@@ -1,6 +1,11 @@
 #ifndef _NAGEOIRE
 #define _NAGEOIRE
 
+/*!
+ *  \class Nageoire
+ *  \brief Classe qui implémente l'accessoire qui augmente la vitesse normale d'une bestiole.
+ */
+
 class Nageoire
 {
 

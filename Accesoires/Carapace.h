@@ -1,6 +1,12 @@
 #ifndef _CARAPACE
 #define _CARAPACE
 
+/*!
+ *  \class Carapace
+ *  \brief Classe qui implémente l'accessoire qui détérmine la capacité d'une bestiole de
+ *   supporter une collision. En revanche, il donne aussi un ralentissement.
+ */
+
 class Carapace
 {
 

@@ -11,9 +11,10 @@ const double	Oeil::MIN_DETECTION = 0.;
 
 Oeil::Oeil()
 {
-	distance = MIN_DISTANCE + ((double) rand()) / RAND_MAX * MAX_DISTANCE;
-	angle = MIN_ANGLE + ((double) rand()) / RAND_MAX * MAX_ANGLE;
-	detection = MIN_DETECTION + ((double) rand()) / RAND_MAX * MAX_DETECTION;
+		// Initialisation :  génération aléatoire des paramètres selon les maxima et minima définis
+	distance = MIN_DISTANCE + ((double) rand()) / RAND_MAX * MAX_DISTANCE;		// distance de vision
+	angle = MIN_ANGLE + ((double) rand()) / RAND_MAX * MAX_ANGLE;					// champ de vision
+	detection = MIN_DETECTION + ((double) rand()) / RAND_MAX * MAX_DETECTION;	// comparaison avec le camouflage 
 }
 
 double Oeil::getDistance ( void ) const
@@ -26,14 +27,17 @@ double Oeil::getAngle( void ) const
 }
 bool Oeil::detecte( double distance_autre, double angle_res, double camouflage ) const
 {
-	bool dist_cond = distance_autre < distance;
+	bool dist_cond = distance_autre < distance;	// Condition de distance plus petite
+	/* Conditon qui vérifie que la différencedes angles des 
+	bestioles se trouve entre l'angle du capteur */
 	bool angle_plus = angle_res < angle;
-   bool angle_moins = angle_res > -angle;
-   bool detect_cond = detection > camouflage;
+   bool angle_moins = angle_res > -angle;	
+
+   bool detect_cond = detection > camouflage;	// Comparaison avec le camouflage
 	return (dist_cond && angle_plus && angle_moins && detect_cond);
 }
 
-Oeil& Oeil::operator=( const Oeil& other )
+Oeil& Oeil::operator=( const Oeil& other ) // Opérateur d'égalite pour la consturction par copie de Bestiole
 {
    // Guard self assignment
     if (this == &other)

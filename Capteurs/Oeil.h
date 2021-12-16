@@ -1,6 +1,11 @@
 #ifndef _OEIL
 #define _OEIL
 
+/*!
+ *  \class Nageoire
+ *  \brief Classe qui implémente le capteur qui permet à une Bestiole de voir son environnement.
+ */
+
 class Oeil
 {
 
@@ -17,9 +22,12 @@ private :
 
 
 public :
+   // INITIALISATION ET DESTRUCTION
    Oeil( );
+   // GETTERS
 	double getDistance ( void ) const;
 	double getAngle( void ) const;
+   // CONDITIONS ET OPERATEURS
 	bool detecte( double distance_autre, double angle_res, double camouflage ) const;
    Oeil& operator=( const Oeil & other);
 
