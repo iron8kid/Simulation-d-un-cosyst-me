@@ -18,10 +18,11 @@ double Oreille::getDistance ( void ) const
 	return distance;
 }
 
-bool Oreille::detecte( double distance_autre ) const
+bool Oreille::detecte( double distance_autre, double camouflage) const
 {
 	bool dist_cond = distance_autre < distance;
-	return (dist_cond);
+	bool detect_cond = detection > camouflage;
+	return (dist_cond && detect_cond);
 }
 
 Oreille& Oreille::operator=( const Oreille& other )

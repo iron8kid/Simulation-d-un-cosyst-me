@@ -17,7 +17,7 @@ private :
 public :
    Oreille();
 	double getDistance ( void ) const;
-	bool detecte( double distance_autre ) const;
+	bool detecte( double distance_autre, double camouflage  ) const;
    Oreille& operator=( const Oreille & other);
 
 };

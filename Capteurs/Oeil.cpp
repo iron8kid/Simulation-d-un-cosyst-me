@@ -24,12 +24,13 @@ double Oeil::getAngle( void ) const
 {
 	return angle;
 }
-bool Oeil::detecte( double distance_autre, double angle_res ) const
+bool Oeil::detecte( double distance_autre, double angle_res, double camouflage ) const
 {
 	bool dist_cond = distance_autre < distance;
 	bool angle_plus = angle_res < angle;
-   	bool angle_moins = angle_res > -angle;
-	return (dist_cond && angle_plus && angle_moins);
+   bool angle_moins = angle_res > -angle;
+   bool detect_cond = detection > camouflage;
+	return (dist_cond && angle_plus && angle_moins && detect_cond);
 }
 
 Oeil& Oeil::operator=( const Oeil& other )

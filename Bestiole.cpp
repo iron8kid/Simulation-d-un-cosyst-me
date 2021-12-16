@@ -180,8 +180,10 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
 {  
    double dist = this->distance(b);
    double angle = std::remainder(this->angle(b)-orientation, 2*M_PI);
-   bool oeil_cond = oeil.detecte(dist, angle);
-   bool oreille_cond = oreille.detecte(dist);
+   double camouflage_autre = b.getCamouflage();
+
+   bool oeil_cond = oeil.detecte(dist, angle, camouflage_autre);
+   bool oreille_cond = oreille.detecte(dist, camouflage_autre);
 
    return ( oeil_cond && oreille_cond );
 
@@ -240,6 +242,12 @@ double Bestiole::getVitesse() const
 {
     return vitesse;
 }
+
+double Bestiole::getCamouflage( ) const
+{
+   return camouflage.getCamouflage();
+}
+
 void Bestiole::accelerer(bool boost)
 {
     if(boost)

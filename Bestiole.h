@@ -84,6 +84,7 @@ public :                                           // Forme canonique :
    int getID( ) const;
    double getOrientation( ) const ;
    Milieu& getMilieu( ) const;
+   double getCamouflage( ) const ;
    // OPERATORS, COMPARISONS
    double distance( const Bestiole & b ) const;
    double angle( const Bestiole & b ) const;
