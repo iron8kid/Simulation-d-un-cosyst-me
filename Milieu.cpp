@@ -14,8 +14,9 @@ bool testProba(int proba){
 }
 
 const T    Milieu::white[] = { (T)255, (T)255, (T)255 };
-const int      Milieu::DEATH_PROB=1;
+const int      Milieu::DEATH_PROB=10;
 const int      Milieu::CLONE_PROB=1;
+const int      Milieu::NAISSANCE_PROB=1;
 
 Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
                                             width(_width), height(_height)
@@ -61,7 +62,7 @@ void Milieu::step( void )
            cout <<"A lucky bestiole will be cloned" << endl;
            addMember(Bestiole((*it)));
        }
-       if(it->getcollisionState() && testProba(DEATH_PROB))
+       if(it->getcollisionState() && testProba(DEATH_PROB/it->getProtection()))
        {
            cout <<"An unlucky bestiole will die" << endl;
            it->setMustDie(true);
@@ -69,7 +70,7 @@ void Milieu::step( void )
 
    } // for
    mort( );
-   if (testProba(20))
+   if (testProba(NAISSANCE_PROB))
       naissance(); // naissance avec une probabilité de 20%
 
 }

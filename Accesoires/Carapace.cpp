@@ -1,7 +1,7 @@
 #include "Carapace.h"
 #include <random>
 
-const double      Carapace::MAX_PROTECTION = 1.2;
+const double      Carapace::MAX_PROTECTION = 50;
 const double      Carapace::MAX_RALENTISSEMENT = 1.2;
 Carapace::Carapace( void ) // Initialisation avec paramètres aléatoires.
 {

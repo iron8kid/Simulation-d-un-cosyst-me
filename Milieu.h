@@ -25,6 +25,7 @@ private :
     static const T          white[];
     static const int     DEATH_PROB;
     static const int     CLONE_PROB;
+    static const int     NAISSANCE_PROB;
 
    int                     width, height;
    std::vector<Bestiole>   listeBestioles;

@@ -99,6 +99,7 @@ public :                                           // Forme canonique :
    double getCumulX() const;
    double getCumulY() const;
    int getID( ) const;
+   double getProtection() const;
    double getOrientation( ) const ;
    Milieu& getMilieu( ) const;
    double getCamouflage( ) const ;

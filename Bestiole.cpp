@@ -8,10 +8,10 @@
 #include <random>
 
 const double      Bestiole::AFF_SIZE = 8.;
-const double      Bestiole::MAX_VITESSE = 10.;
+const double      Bestiole::MAX_VITESSE = 1.5;
 const double      Bestiole::SPEED_FACTOR = 1.5;
 const double      Bestiole::LIMITE_VUE = 50.;
-const int         Bestiole::AGE_MAX = 100;
+const int         Bestiole::AGE_MAX = 1000;
 
 
 int               Bestiole::next = 0;
@@ -347,4 +347,9 @@ double Bestiole::angle( const Bestiole & b ) const
 Milieu& Bestiole::getMilieu() const
 {
    return *monMilieu;
+}
+
+double Bestiole::getProtection() const
+{
+   return carapace.getProtection();
 }
