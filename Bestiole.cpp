@@ -11,7 +11,7 @@ const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
 const double      Bestiole::SPEED_FACTOR = 1.5;
 const double      Bestiole::LIMITE_VUE = 50.;
-const int         Bestiole::AGE_MAX = 100;
+const int         Bestiole::AGE_MAX = 100000;
 
 int               Bestiole::next = 0;
 
@@ -31,9 +31,9 @@ Bestiole::Bestiole( Milieu & milieu )
    age_actuel = 0;
    monMilieu = &milieu;
    comportement = monMilieu->comportements[rand() % 5];
-   camouflage = Camouflage(0.);
-   carapace = Carapace(0.);
-   nageoire = Nageoire(0.);
+   camouflage = Camouflage();
+   carapace = Carapace();
+   nageoire = Nageoire();
    couleur = comportement->getCouleur();
    oeil = Oeil();
    oreille = Oreille();
